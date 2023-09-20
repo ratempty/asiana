@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery_ui_slider</title>
+  <!-- style sheet -->
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/resources/demos/style.css"> -->
+  <style>
+    #ex1 span{ background: gold; }
+    .slider{ width:500px; margin: 40px; }
+  </style>
+  <!-- script -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+    $(function(){
+      const make1 = function(){
+      $('#ex1').slider({
+        value : 80,
+        min : 0,
+        max : 200 ,
+        step : 10,
+        slide : function(event , ui){
+          $('#out1').text(ui.value);
+        }
+      });
+      $('#out1').text($('#ex1').slider('value'));
+    } 
+    make1();
+      $('#ex2').slider({
+        range : true,
+        values : [30,75],
+        slide : function(event , ui){
+          $('#out2').text(ui.values[0]+' ~ '+ui.values[1])
+        }
+      })
+      $('#out2').text($('#ex2').slider('values',0)+' ~ '+$('#ex2').slider('values',1));
+
+      $('#ex3').slider({
+        orientation : 'vertical',
+        value : 60,
+        range : 'min',
+        slide : function(event,ui){
+          $('#out3').text(ui.value);
+        }
+      })
+      $('#out3').text($('#ex3').slider('value'))
+
+      $('button').click(function(){
+        let btn = $(this).attr('class');
+        switch(btn){
+          case 'btn1' : $('#ex1').slider('destroy'); break;
+          case 'btn2' : $('#ex1').slider('disable'); break;
+          case 'btn3' : $('#ex1').slider('enable'); break;
+          case 'btn4' : make1(); break;
+        }
+      })
+    })
+  </script>
+</head>
+<body>
+  <button class="btn1">destroy</button>
+  <button class="btn2">disable</button>
+  <button class="btn3">enable</button>
+  <button class="btn4">make</button>
+  <hr>
+  <div class="output">
+    <span>value = </span>
+    <span id="out1">0</span>
+  </div>
+  <div class="slider" id="ex1"></div>
+  <hr>
+  <div class="output">
+    <span>range = </span>
+    <span id="out2">0</span>
+  </div>
+  <div class="slider" id="ex2"></div>
+  <hr>
+  <div class="output">
+    <span>vertical = </span>
+    <span id="out3">0</span>
+  </div>
+  <div class="slider1" id="ex3"></div>
+  <hr>
+</body>
+</html>

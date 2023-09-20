@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="format-detection"
+      content="telephone=no, address=no, email=no"
+    />
+    <link rel="icon" href="./img/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>ASIANA AIRLINES</title>
+  </head>
+  <body>
+    <div class="blank"></div>
+    <section id="intro" class="">
+      <div class="circle">
+        <h1>ASIANA AIRLINES</h1>
+        <img src="img/intro_logo.png" alt="" />
+      </div>
+    </section>
+    <header id="main_header">
+      <button type="button" id="menubtn">
+        <img src="img/btn_menu.png" alt="전체메뉴" />
+      </button>
+      <nav class="gnb">
+        <ul>
+          <li>
+            <a href="#">예약하기</a>
+            <ul class="sub1">
+              <li>
+                <a href="#">항공권예약</a>
+                <ul class="sub2">
+                  <li><a href="#">- 예약하기</a></li>
+                  <li><a href="#">- 예약안내</a></li>
+                  <li><a href="#">- 운임안내</a></li>
+                  <li><a href="#">- 최저가 간편조회</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">예약조회</a>
+                <ul class="sub2">
+                  <li><a href="#">- 예약내역</a></li>
+                  <li><a href="#">- 항공권 구매내역</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">운항정보</a>
+                <ul class="sub2">
+                  <li><a href="#">- 스케줄 조회</a></li>
+                  <li><a href="#">- 출도착 조회</a></li>
+                </ul>
+              </li>
+              <li><a href="#">체크인하기</a></li>
+              <li>
+                <a href="#">취항지정보</a>
+                <ul class="sub2">
+                  <li><a href="#">- 운항노선</a></li>
+                  <li><a href="#">- 여행정보</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">여행준비</a>
+            <ul class="sub1">
+              <li>
+                <a href="#">체크인안내</a>
+                <ul class="sub2">
+                  <li><a href="#">- 사전체크인</a></li>
+                  <li><a href="#">- 공항체크인</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">제휴서비스</a>
+                <ul class="sub2">
+                  <li><a href="#">- 렌터카</a></li>
+                  <li><a href="#">- 여행자보험</a></li>
+                  <li><a href="#">- 투어/액티비티</a></li>
+                  <li><a href="#">- 호텔/마일리지</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">수하물</a>
+                <ul class="sub2">
+                  <li><a href="#">- 이용안내</a></li>
+                  <li><a href="#">- 위탁수하물</a></li>
+                  <li><a href="#">- 운송제한물품</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">도움이 필요한 고객</a>
+                <ul class="sub2">
+                  <li><a href="#">- 장애인 고객</a></li>
+                  <li><a href="#">- 임산부 고객</a></li>
+                  <li><a href="#">- 반려동물동반</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">출입국 규정</a>
+                <ul class="sub2">
+                  <li><a href="#">- 규정정보</a></li>
+                  <li><a href="#">- 출입국 신고서</a></li>
+                  <li><a href="#">- 코로나 19 안내</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">공항/기내</a>
+            <ul class="sub1">
+              <li>
+                <a href="#">공항에서</a>
+                <ul class="sub2">
+                  <li><a href="#">- 공항안내</a></li>
+                  <li><a href="#">- 라운지 이용</a></li>
+                  <li><a href="#">- 탑승수속절차</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">기내에서</a>
+                <ul class="sub2">
+                  <li><a href="#">- 기내 서비스 순서</a></li>
+                  <li><a href="#">- 기내 유실물 조회</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">항공기 정보</a>
+                <ul class="sub2">
+                  <li><a href="#">- a380-800</a></li>
+                  <li><a href="#">- a350-900</a></li>
+                  <li><a href="#">- b747-400</a></li>
+                </ul>
+              </li>
+              <li><a href="#">매직 보딩 패스</a></li>
+              <li>
+                <a href="#">부가서비스</a>
+                <ul class="sub2">
+                  <li><a href="#">- 듀오좌석</a></li>
+                  <li><a href="#">- 레그룸 좌석</a></li>
+                  <li><a href="#">- 기내 WI-FI</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">클럽회원</a>
+            <ul class="sub1">
+              <li>
+                <a href="#">회원제도</a>
+                <ul class="sub2">
+                  <li><a href="#">- 회원안내</a></li>
+                  <li><a href="#">- 할인제휴사</a></li>
+                  <li><a href="#">- 특별프로그램</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">회원정보</a>
+                <ul class="sub2">
+                  <li><a href="#">- 회원등급</a></li>
+                  <li><a href="#">- 카드발급</a></li>
+                  <li><a href="#">- 회원정보변경</a></li>
+                </ul>
+              </li>
+              <li><a href="#">마일리지</a></li>
+              <li>
+                <a href="#">이벤트</a>
+                <ul class="sub2">
+                  <li><a href="#">- 진행 이벤트</a></li>
+                  <li><a href="#">- 당첨자 발표</a></li>
+                  <li><a href="#">- 종료된 이벤트</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">고객센터</a>
+            <ul class="sub1">
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">자주 찾는 질문</a></li>
+              <li><a href="#">고객의 말씀</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="gnb_bg"></div>
+    </header>
+    <section id="page1">
+      <div class="reservation">
+        <input type="radio" id="tab1" name="tabs" checked />
+        <input type="radio" id="tab2" name="tabs" />
+        <input type="radio" id="tab3" name="tabs" />
+        <input type="radio" id="tab4" name="tabs" />
+        <p class="tab_btn">
+          <label for="tab1">항공권예약</label>
+          <label for="tab2">예약조회</label>
+          <label for="tab3">출도착조회</label>
+          <label for="tab4">체크인</label>
+        </p>
+        <div class="wrapper1">
+          <input type="radio" id="round" name="ways" checked />
+          <input type="radio" id="one" name="ways" />
+          <p class="way_btn">
+            <label for="round">왕복</label>
+            <label for="one">편도</label>
+          </p>
+          <input type="text" placeholder="출발지" id="starting1" />
+          <input type="text" placeholder="도착지" id="target1" />
+          <input
+            type="text"
+            placeholder="탑승일"
+            id="datepick1"
+            class="datepicker"
+          />
+          <input type="text" placeholder="좌석 등급" id="seatgrade1" />
+          <button type="button"><img src="img/glass.png" alt="" /></button>
+        </div>
+        <div class="wrapper2">
+          <input type="text" placeholder="출발지" id="starting2" />
+          <input type="text" placeholder="도착지" id="target2" />
+          <input
+            type="text"
+            placeholder="탑승일"
+            id="datepick2"
+            class="datepicker"
+          />
+          <input type="text" placeholder="예약번호" id="checknum1" />
+          <button type="button"><img src="img/glass.png" alt="" /></button>
+        </div>
+        <div class="wrapper3">
+          <input type="text" placeholder="출발지" id="starting3" />
+          <input type="text" placeholder="도착지" id="target3" />
+          <input type="text" placeholder="노선 조회" id="chechkline" />
+          <input
+            type="text"
+            placeholder="출발지 기준일"
+            id="datepick3"
+            class="datepicker"
+          />
+          <button type="button"><img src="img/glass.png" alt="" /></button>
+        </div>
+        <div class="wrapper4">
+          <input type="radio" id="line" name="line" checked />
+          <input type="radio" id="airname" name="line" />
+          <p class="linebtn">
+            <label for="line">노선조회</label>
+            <label for="airname">편명조회</label>
+          </p>
+          <input type="text" placeholder="예약번호" id="checknum2" />
+          <input type="text" placeholder="도착지" id="target4" />
+          <button type="button"><img src="img/glass.png" alt="" /></button>
+        </div>
+      </div>
+      <div class="slide_container">
+        <div class="swiper mySwiper">
+          <div class="slides swiper-wrapper">
+            <div class="banner swiper-slide">
+              <a href="#">
+                <img src="img/banner_paris.jpg" alt="" />
+              </a>
+            </div>
+            <div class="banner swiper-slide">
+              <a href="#">
+                <img src="img/banner_hawaii.jpg" alt="" />
+              </a>
+            </div>
+            <div class="banner swiper-slide">
+              <a href="#">
+                <img src="img/banner_china.jpg" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="explane_wrap">
+          <div class="swiper mySwiper2">
+            <div class="swiper-wrapper">
+              <div class="explane greenbg swiper-slide">
+                <h2>사랑받기 위한 도시 <span>파리</span>로 데려다 줄게요</h2>
+                <p>
+                  &#35;파리 &#35;에펠탑 &#35;힐링 &#35;노트르담 &#35;대성당
+                  &#35;루브르 &#35;박물관
+                </p>
+              </div>
+              <div class="explane bluebg swiper-slide">
+                <h2>
+                  <span>하와이</span> 여행의 <br />
+                  비즈니스클래스 특가를 만나보세요
+                </h2>
+                <p>
+                  &#35;하와이 &#35;성수기 &#35;최저가 &#35;진행중 &#35;현지
+                  &#35;유명 스팟 &#35;매직보딩패스
+                </p>
+              </div>
+              <div class="explane redbg swiper-slide">
+                <h2>
+                  <span>차이나(CHINA)</span>는,<br />
+                  아시아나
+                </h2>
+                <p>
+                  &#35;차이나 &#35;관광비자 &#35;위탁수하물 &#35;1+1 &#35;16개
+                  &#35;노선운항 &#35;중국은 아시아나
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="remote">
+        <button type="button" id="prev1">
+          <img src="img/prev.png" alt="이전 이미지" />
+        </button>
+        <button type="button" id="next1">
+          <img src="img/next.png" alt="다음 이미지" />
+        </button>
+        <button type="button" id="play1">
+          <img src="img/play.png" alt="재생" />
+        </button>
+        <button type="button" id="pause1">
+          <img src="img/pause.png" alt="일시정지" />
+        </button>
+      </div>
+    </section>
+    <section id="page2">
+      <div class="lower">
+        <h2>최저가 간편조회</h2>
+        <p>
+          6개월 이내로 출발하는 항공편의 <span></span> 최저가와 출발일을
+          간편하게 조회할 수 있습니다.
+        </p>
+        <div class="remote">
+          <button type="button" id="prev2">
+            <img src="img/prev.png" alt="이전 이미지" />
+          </button>
+          <button type="button" id="next2">
+            <img src="img/next.png" alt="다음 이미지" />
+          </button>
+          <button type="button" id="play2">
+            <img src="img/play.png" alt="재생" />
+          </button>
+          <button type="button" id="pause2">
+            <img src="img/pause.png" alt="일시정지" />
+          </button>
+        </div>
+      </div>
+      <div class="ud_container">
+        <div class="saipan city1">
+          <a href="#" class="go_lower">
+            <img src="img/lowprice_saipan.jpg" alt="" />
+          </a>
+          <div class="info">
+            <p>
+              <strong class="airport"><span>ICN</span>서울/인천</strong>
+              <span class="trip"></span>
+              <strong class="airport"><span>SPN</span>사이판</strong>
+            </p>
+            <div class="graph">
+              <div class="bar1">
+                <span class="price">522,900</span>
+                <span class="month">June</span>
+              </div>
+              <div class="bar2">
+                <span class="price">477,900</span>
+                <span class="month">July</span>
+              </div>
+              <div class="bar3">
+                <span class="price">447,900</span>
+                <span class="month">August</span>
+              </div>
+              <div class="bar4">
+                <span class="price">387,900</span>
+                <span class="month">October</span>
+              </div>
+              <div class="bar5">
+                <span class="price">387,900</span>
+                <span class="month">November</span>
+              </div>
+            </div>
+            <p class="eco">기준 : 이코노미 / 왕복총액 / 단위 KRW</p>
+          </div>
+        </div>
+        <div class="frank city2">
+          <a href="#" class="go_lower">
+            <img src="img/lowprice_frankfurt.jpg" alt="" />
+          </a>
+          <div class="info">
+            <p>
+              <strong class="airport"><span>ICN</span>서울/인천</strong>
+              <span class="trip"></span>
+              <strong class="airport"><span>FRA</span>프랑크푸르트</strong>
+            </p>
+            <div class="graph">
+              <div class="bar1">
+                <span class="price">1,341,600</span>
+                <span class="month">June</span>
+              </div>
+              <div class="bar2">
+                <span class="price">1,566,600</span>
+                <span class="month">July</span>
+              </div>
+              <div class="bar3">
+                <span class="price">1,441,600</span>
+                <span class="month">August</span>
+              </div>
+              <div class="bar4">
+                <span class="price">1,261,600</span>
+                <span class="month">October</span>
+              </div>
+              <div class="bar5">
+                <span class="price">1,261,600</span>
+                <span class="month">November</span>
+              </div>
+            </div>
+            <p class="eco">기준 : 이코노미 / 왕복총액 / 단위 KRW</p>
+          </div>
+        </div>
+        <div class="rome city3">
+          <a href="#">
+            <img src="img/lowprice_rome.jpg" alt="" />
+          </a>
+          <div class="info">
+            <p>
+              <strong class="airport"><span>ICN</span>서울/인천</strong>
+              <span class="trip"></span>
+              <strong class="airport"><span>FCO</span>로마/다빈치</strong>
+            </p>
+            <div class="graph">
+              <div class="bar1">
+                <span class="price">2,406,000</span>
+                <span class="month">June</span>
+              </div>
+              <div class="bar2">
+                <span class="price">2,256,000</span>
+                <span class="month">July</span>
+              </div>
+              <div class="bar3">
+                <span class="price">1,929,100</span>
+                <span class="month">August</span>
+              </div>
+              <div class="bar4">
+                <span class="price">1,974,100</span>
+                <span class="month">October</span>
+              </div>
+              <div class="bar5">
+                <span class="price">1,359,100</span>
+                <span class="month">November</span>
+              </div>
+            </div>
+            <p class="eco">기준 : 이코노미 / 왕복총액 / 단위 KRW</p>
+          </div>
+        </div>
+        <div class="osaka city4">
+          <a href="#">
+            <img src="img/lowprice_osaka.jpg" alt="" />
+          </a>
+          <div class="info">
+            <p>
+              <strong class="airport"><span>ICN</span>서울/인천</strong>
+              <span class="trip"></span>
+              <strong class="airport"><span>KIX</span>오사카/간사이</strong>
+            </p>
+            <div class="graph">
+              <div class="bar1">
+                <span class="price">322,100</span>
+                <span class="month">June</span>
+              </div>
+              <div class="bar2">
+                <span class="price">322,100</span>
+                <span class="month">July</span>
+              </div>
+              <div class="bar3">
+                <span class="price">322,100</span>
+                <span class="month">August</span>
+              </div>
+              <div class="bar4">
+                <span class="price">412,100</span>
+                <span class="month">October</span>
+              </div>
+              <div class="bar5">
+                <span class="price">422,100</span>
+                <span class="month">November</span>
+              </div>
+            </div>
+            <p class="eco">기준 : 이코노미 / 왕복총액 / 단위 KRW</p>
+          </div>
+        </div>
+        <div class="bangkok city5">
+          <a href="#">
+            <img src="img/lowprice_bangkok.jpg" alt="" />
+          </a>
+          <div class="info">
+            <p>
+              <strong class="airport"><span>ICN</span>서울/인천</strong>
+              <span class="trip"></span>
+              <strong class="airport"><span>BKK</span>방콕</strong>
+            </p>
+            <div class="graph">
+              <div class="bar1">
+                <span class="price">539,700</span>
+                <span class="month">June</span>
+              </div>
+              <div class="bar2">
+                <span class="price">589,700</span>
+                <span class="month">July</span>
+              </div>
+              <div class="bar3">
+                <span class="price">589,700</span>
+                <span class="month">August</span>
+              </div>
+              <div class="bar4">
+                <span class="price">539,700</span>
+                <span class="month">October</span>
+              </div>
+              <div class="bar5">
+                <span class="price">539,700</span>
+                <span class="month">November</span>
+              </div>
+            </div>
+            <p class="eco">기준 : 이코노미 / 왕복총액 / 단위 KRW</p>
+          </div>
+        </div>
+        <div class="LA city6">
+          <a href="#">
+            <img src="img/lowprice_LA.jpg" alt="" />
+          </a>
+          <div class="info">
+            <p>
+              <strong class="airport"><span>ICN</span>서울/인천</strong>
+              <span class="trip"></span>
+              <strong class="airport"><span>LAX</span>로스앤젤레스</strong>
+            </p>
+            <div class="graph">
+              <div class="bar1">
+                <span class="price">2,390,900</span>
+                <span class="month">June</span>
+              </div>
+              <div class="bar2">
+                <span class="price">2,315,900</span>
+                <span class="month">July</span>
+              </div>
+              <div class="bar3">
+                <span class="price">1,715,900</span>
+                <span class="month">August</span>
+              </div>
+              <div class="bar4">
+                <span class="price">1,440,900</span>
+                <span class="month">October</span>
+              </div>
+              <div class="bar5">
+                <span class="price">1,440,900</span>
+                <span class="month">November</span>
+              </div>
+            </div>
+            <p class="eco">기준 : 이코노미 / 왕복총액 / 단위 KRW</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="page3">
+      <div class="event">
+        <h2>이벤트</h2>
+        <p>아시아나 항공의 특별한 이벤트를 만나보세요.</p>
+        <div class="event_wrap">
+          <div class="slick">
+            <div>
+              <a href="#"
+                ><img src="img/event1.jpeg" alt="아시아나 라이크"
+              /></a>
+              <div class="black_bg">
+                <p>아시아나 라이크</p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+            <div>
+              <a href="#"
+                ><img
+                  src="img/event2.jpeg"
+                  alt="bmw coin의 아시아나 마일리지 전환 제휴 개시"
+              /></a>
+              <div class="black_bg">
+                <p>
+                  bmw coin의 아시아나 <br />
+                  마일리지 전환 제휴 개시
+                </p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+            <div>
+              <a href="#"
+                ><img
+                  src="img/event3.jpeg"
+                  alt="온라인 신규회원 웰컴 쿠폰 프로모션"
+              /></a>
+              <div class="black_bg">
+                <p>
+                  온라인 신규회원<br />
+                  웰컴 쿠폰 프로모션
+                </p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+            <div class="mh">
+              <a href="#"
+                ><img
+                  src="img/event4.jpeg"
+                  alt="아트콜라보 상품 마일리지 구매 이벤트"
+              /></a>
+              <div class="black_bg">
+                <p>
+                  아트콜라보 상품<br />
+                  마일리지 구매 이벤트
+                </p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+            <div class="mh">
+              <a href="#"
+                ><img
+                  src="img/event5.jpeg"
+                  alt="미래에셋생명 신규 제휴 기념 프로모션"
+              /></a>
+              <div class="black_bg">
+                <p>
+                  미래에셋생명<br />
+                  신규 제휴 기념 프로모션
+                </p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+
+            <div class="mh">
+              <a href="#"
+                ><img
+                  src="img/event7.jpeg"
+                  alt="아시아나 삼성애니패스플래티늄카드 2만 마일리지 적립행사"
+              /></a>
+              <div class="black_bg">
+                <p>
+                  아시아나 삼성카드<br />
+                  2만 마일리지 적립행사
+                </p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+            <div class="mh">
+              <a href="#"
+                ><img src="img/event8.jpeg" alt="a380 비즈니스 스위트"
+              /></a>
+              <div class="black_bg">
+                <p>a380 비즈니스 스위트</p>
+                <span class="date">06 / 01 ~ 06 / 30</span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="remote_bar">
+            <button type="button" id="event_remote"><img src="img/event_remote.png" alt=""></button>
+          </div> -->
+        </div>
+      </div>
+    </section>
+    <section id="page4">
+      <div class="container">
+        <div class="notice">
+          <h3>공지사항</h3>
+          <div class="content">
+            <ul>
+              <li><a href="#">증편/재운항 노선 안내</a></li>
+              <li>
+                <a href="#"
+                  >한-태평양 도서국 정상 회의 개최로 인한 인천국제공항 보안
+                </a>
+              </li>
+              <li><a href="#">아시아나항공 공식 SNS 운영정책 안내</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ride">
+          <h3>탑승 수속 절차</h3>
+          <input type="radio" id="inko" name="inout" checked />
+          <input type="radio" id="outko" name="inout" />
+          <div class="labelbox">
+            <label for="inko">국내선</label>
+            <label for="outko">국제선</label>
+          </div>
+          <div class="content_inko">
+            <ol>
+              <li class="inko1">
+                <img src="img/n1.png" alt="1번" class="num" /><img
+                  src="img/airport.png"
+                  alt="공항그림"
+                />
+                <strong>공항 도착</strong>
+                <p>
+                  국내선은 항공기 출발 최소 1시간 전 공항에 도착하는 것을
+                  권장합니다.
+                </p>
+              </li>
+              <li class="inko2">
+                <img src="img/n2.png" alt="2번" class="num" /><img
+                  src="img/airplane_ticket.png"
+                  alt="티켓그림"
+                />
+                <strong>탑승권 발급(택1)</strong>
+                <p>
+                  선택1. 사전 체크인<br />
+                  온라인체크인 또는 오토체크인을 신청하여 홈/모바일 탑승권 발급
+                  <br />
+                  선택2. 공항 체크인<br />
+                  쉽고 빠른 키오스크(자동발급기)를 이용하여 탑승권 발급
+                </p>
+              </li>
+              <li class="inko3">
+                <img src="img/n3.png" alt="3번" class="num" /><img
+                  src="img/bag.png"
+                  alt="가방그림"
+                />
+                <strong>수하물 위탁</strong>
+                <p>
+                  아시아나항공 카운터에서 신분증과 탑승권을 제시하고, 수하물을
+                  위탁하여 주십시오. 국내선은 1인당 20kg (비즈니스 클래스는
+                  30kg) 까지 무료로 부치실 수 있습니다.
+                </p>
+              </li>
+              <li class="inko4">
+                <img src="img/n4.png" alt="4번" class="num" /><img
+                  src="img/security.png"
+                  alt="보안검색그림"
+                />
+                <strong>출발장 입장 및 보안 검색</strong>
+                <p>
+                  출발장 입구에서 보안 요원에게 탑승권과
+                  신분증(주민등록증/운전면허증/여권 등)을 제시한 후 보안 검색을
+                  완료하고 탑승구로 이동합니다.
+                </p>
+              </li>
+              <li class="inko5">
+                <img src="img/n5.png" alt="5번" class="num" /><img
+                  src="img/seat.png"
+                  alt="좌석그림"
+                />
+                <strong>항공기 탑승</strong>
+                <p>
+                  원활한 탑승 확인을 위하여, 탑승권을 개별 소지하여 주십시오.
+                  (모바일 탑승권은 가급적 본인 단말기에 저장) 출발 15분전 탑승이
+                  시작되고, 출발 5분전에 탑승이 마감됩니다. 정시운항을 위하여
+                  탑승시각에 맞춰 해당 탑승구에서 대기하여 주시기 바랍니다.
+                </p>
+              </li>
+            </ol>
+            <button id="nextbtn1"><img src="img/next.png" alt="" /></button>
+            <button id="prevbtn1"><img src="img/prev.png" alt="" /></button>
+          </div>
+          <div class="content_outko">
+            <ol>
+              <li class="outko1">
+                <img src="img/n1.png" alt="1번" class="num" /><img
+                  src="img/airport.png"
+                  alt="공항그림"
+                />
+                <strong>공항 도착</strong>
+                <p>
+                  국제선은 항공기 출발 최소 2시간 전 공항에 도착하는 것을
+                  권장합니다.
+                </p>
+              </li>
+              <li class="outko2">
+                <img src="img/n2.png" alt="2번" class="num" /><img
+                  src="img/airplane_ticket.png"
+                  alt="티켓그림"
+                />
+                <strong>탑승권 발급(택1)</strong>
+                <p>
+                  선택1. 사전 체크인<br />
+                  출발 48시간 전 온라인체크인 또는 오토체크인을 신청하여
+                  홈/모바일 탑승권 발급<br />
+                  *홈/모바일 탑승권 허용 공항 이 아닌 경우, 공항의 전용
+                  카운터에서 실물 탑승권으로 교환하여 주십시오.
+                </p>
+                <p>
+                  선택2. 공항 체크인<br />
+                  쉽고 빠른 키오스크(자동발급기)를 이용하거나 일반 카운터에서
+                  탑승권 발급
+                </p>
+              </li>
+              <li class="outko3">
+                <img src="img/n3.png" alt="3번" class="num" /><img
+                  src="img/bag.png"
+                  alt="가방그림"
+                />
+                <strong>수하물 위탁</strong>
+                <p>
+                  아시아나항공 카운터에서 신분증과 탑승권을 제시하고, 수하물을
+                  위탁하여 주십시오. 각 공항 운영 사정에 따라 수하물 위탁 전용
+                  카운터 및 온라인 체크인 전용 카운터를 운영하고 있습니다.
+                </p>
+              </li>
+              <li class="outko4">
+                <img src="img/n4.png" alt="4번" class="num" /><img
+                  src="img/security.png"
+                  alt="보안검색그림"
+                />
+                <strong>보안 검색 및 출국 심사</strong>
+                <p>
+                  여행자와 항공기의 안전을 위해 탑승객을 대상으로 보안검색을
+                  실시합니다. <br />
+                  유효한 여권과 출도착지에서 요구하는 여행서류(비자)를 지참하고
+                  출국심사 를 받습니다.
+                </p>
+              </li>
+              <li class="outko5">
+                <img src="img/n5.png" alt="5번" class="num" /><img
+                  src="img/seat.png"
+                  alt="좌석그림"
+                />
+                <strong>항공기 탑승</strong>
+                <p>
+                  원활한 탑승 확인을 위하여, 탑승권을 개별 소지하여 주십시오.
+                  (모바일 탑승권은 가급적 본인 단말기에 저장) 출발 15분전 탑승이
+                  시작되고, 출발 5분전에 탑승이 마감됩니다. 정시운항을 위하여
+                  탑승시각에 맞춰 해당 탑승구에서 대기하여 주시기 바랍니다.
+                </p>
+              </li>
+            </ol>
+            <button id="nextbtn2"><img src="img/next.png" alt="" /></button>
+            <button id="prevbtn2"><img src="img/prev.png" alt="" /></button>
+          </div>
+        </div>
+        <div class="wrapper1">
+          <div class="mileage">
+            <a href="#"><img src="img/mileage.png" alt="" /></a>
+            <strong>마일리지 적립</strong>
+            <p>제휴 신용카드 사용해서 마일리지 적립하기</p>
+          </div>
+          <div class="shield">
+            <a href="#"><img src="img/shield.png" alt="" /></a>
+            <strong>여행자 보험</strong>
+            <div class="sbtns">
+              <a href="#"> 안내 / 확인</a>
+            </div>
+          </div>
+        </div>
+        <div class="wrapper2">
+          <div class="tour">
+            <a href="#"> <img src="img/tour.png" alt="" /></a>
+            <strong>투어/액티비티</strong>
+            <p>
+              홈페이지에서 항공권<br />
+              예약시 마이리얼트립<br />
+              최대 1만원 할인!
+            </p>
+          </div>
+          <div class="rentcar">
+            <a href="#"> <img src="img/car.png" alt="" /></a>
+            <p>렌트카</p>
+          </div>
+          <div class="agoda">
+            <a href="#"> <img src="img/hotel.png" alt="" /></a>
+            <p>호텔 AGODA</p>
+          </div>
+        </div>
+        <div class="question">
+          <h3 class="sr_only">자주찾는 질문</h3>
+          <ul>
+            <li class="fli1">
+              <a href="#">마일리지를 가족과 합산할 수 있나요?</a>
+            </li>
+            <li class="fli2">
+              <a href="#"
+                >저 대신 다른사람이 제 예약으로 대신 갈 수는 없나요?</a
+              >
+            </li>
+            <li class="fli3">
+              <a href="#">마일리지 항공권은 어떻게 발급 받나요?</a>
+            </li>
+            <li class="fli4">
+              <a href="#"
+                >홈페이지에서 구매 후 운임영수증을 출력할 수 있나요?</a
+              >
+            </li>
+            <li class="fli5">
+              <a href="#">마일리지 비밀번호 등록은 어떻게 해야하나요?</a>
+            </li>
+            <li class="fli6"><a href="#">마일리지에 유효기간이 있나요?</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <footer id="main_footer">
+      <div class="fm">
+        <strong>아시아나 항공 (주)</strong>
+        <ul>
+          <li>대표이사 원유석</li>
+          <li>사업자등록번호 104-81-17480</li>
+          <li>통신판매업 신고 제 16-2822</li>
+          <li>아시아나클럽 1588-8180 / 02-2669-8180</li>
+          <li>서울특별시 강서구 오정로 443-83</li>
+          <li>예약 1588-8000 / 02-2669-8000</li>
+          <li>서버 위치 : 아시아나IDT㈜ 전산센터</li>
+          <li>개인정보보호책임자 온라인마케팅 상무 이승환</li>
+        </ul>
+      </div>
+      <div class="qr">
+        <img src="img/asiana_apple.png" alt="" />
+        <img src="img/asiana_and.png" alt="" />
+      </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
+    <script src="js/script.js" type="text/ecmascript"></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>accordion</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script>
+    $(function(){
+      $('#gnb>ul>li>a').on('click',function(e){
+        e.preventDefault();
+        //동위요소 선택함수 -- 다음개체 selector.next() / 이전개체 selector.prev()
+        //상위요소 선택 -- parent() , 동위요소 제외 모든 선택 :not(this) -- siblings();
+        if($(this).next().css('display')=='none'){
+          $('#gnb>ul>li>a').removeClass('on');
+          $(this).addClass('on')
+          $('.sub:visible').slideUp();
+          $(this).next().slideDown();
+        }else{
+          $(this).removeClass('on')
+          $(this).next().slideUp();
+        }
+      });
+    });
+  </script>
+  <style>
+    body,nav,ul,li{margin: 0;padding: 0;}
+    ul{list-style:none;}
+    a{text-decoration:none;}
+    body{ font-family:"맑은 고딕",sans-serif; font-size: 12px; }
+    #gnb{ width:200px; height:450px; border:1px solid #555; margin:70px 0 0 120px; background:#fff; }
+    #gnb>ul>li{ border-bottom:1px solid #ccc; }
+    #gnb>ul>li>a{ display:block; height:30px; line-height:30px; padding-left:20px; font-weight: bold; color:#333; background:#f3f4f7; }
+    #gnb>ul>li>a.on{ background:#234; color:#fff; }
+    #gnb>ul>li>.sub{ padding: 24px 20px; border-top:1px solid #ccc; background:#fff; line-height:1.6; display:none; }
+    #gnb>ul>li>.sub a{ color:#454545; }
+  </style>
+</head>
+<body>
+  <nav id="gnb">
+    <ul>
+      <li>
+        <a href="#">국내도서</a>
+        <div class="sub">
+          <ul>
+            <li><a href="#">베스트 셀러</a></li>
+            <li><a href="#">새로나온 책</a></li>
+            <li><a href="#">추천 도서</a></li>
+            <li><a href="#">특가 도서</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">외국도서</a>
+        <div class="sub">
+          <ul>
+            <li><a href="#">베스트 셀러</a></li>
+            <li><a href="#">새로나온 책</a></li>
+            <li><a href="#">영미도서 이벤트</a></li>
+            <li><a href="#">영미잡지 정기구독</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">E-Book</a>
+        <div class="sub">
+          <ul>
+            <li><a href="#">베스트</a></li>
+            <li><a href="#">신간</a></li>
+            <li><a href="#">추천</a></li>
+            <li><a href="#">무료</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#">중고장터</a>
+        <div class="sub">
+          <ul>
+            <li><a href="#">판매자페이지</a></li>
+            <li><a href="#">중고책구매방법</a></li>
+            <li><a href="#">구매상품배송조회</a></li>
+            <li><a href="#">스마트비교서비스</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css제어</title>
+  <style>
+    button{ font-size: 18px; }
+    p{ color:#339;}
+    .style1{ color:#c3c; font-style:italic; }
+    .style2{ background:#ccc; letter-spacing: 0.5em; }
+    .btn_on{ background:#000; color:#fff; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.btn1').click(function(){
+        $('.ex1').css('background','#993');
+      })
+      $('.btn2').click(function(){
+        $('.ex2').css('fontSize','30px');
+      })
+      $('.btn3').click(function(){
+        $('.ex3').css({
+          'font-style':'italic',
+          'text-decoration':'underline',
+          'color':'#fc0'
+        })
+      })
+      $('.btn4').click(function(){
+        $('h1').addClass('style1')
+      })
+      $('.btn5').click(function(){
+        $('h1').addClass('style1 style2')
+      })
+      $('.btn6').click(function(){
+        $(this).next().removeClass('style1 style2')
+      })
+      $('.btn7').click(function(){
+        $('.ex7').toggleClass('style1')
+      })
+      $('.btn8').click(function(){
+        if($('#demo').hasClass('ex1')){
+          $('#demo').addClass('style2')
+        }else{
+          $('#demo').text('클래스는 style1입니다.')
+        }
+      })
+      $('button').click(function(){
+        $(this).addClass('btn_on');
+        $('button').not(this).removeClass('btn_on');
+      })
+    })
+  </script>
+</head>
+<body>
+  <button class="btn1">배경색</button>
+  <p class="ex1">배경색을 추가해 주세요</p>
+  <hr>
+  <button class="btn2">글자크기</button>
+  <p class="ex2">글자크기를 30px로 변경해주세요</p>
+  <hr>
+  <button class="btn3">글자 스타일</button>
+  <p class="ex3">기울기 글자, 글자색, 글자 밑줄 변경</p>
+  <hr>
+  <button class="btn4">클래스 추가</button>
+  <h1>css로 선언되어있는 스타일 적용</h1>
+  <hr>
+  <button class="btn5">여러 클래스 추가</button>
+  <h1>여러스타일 적용</h1>
+  <hr>
+  <button class="btn6">클래스 제거</button>
+  <p class="style1 style2">css로 적용되어있는 스타일 제거</p>
+  <hr>
+  <button class="btn7">클래스 토글</button>
+  <p class="ex7">클래스 토글</p>
+  <hr>
+  <button class="btn8">hasClass</button>
+  <p class="style1" id="demo">요소가 클래스명의 소유여부를 조건으로 사용</p>
+</body>
+</html>

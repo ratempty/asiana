@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>droppable</title>
+  <style>
+    .draggable{ width: 200px; height: 200px; border: 1px solid #000; }
+    #droppable{ width: 500px; height: 400px; border: 1px solid #000; margin: 100px; }
+    .drop{ background:#fc0; }
+    .hover{ background: #ccc; }
+    .active{ box-shadow: 1px 1px 3px 0px rgba(0,0,0,.5); }
+    .drop_inner{ width: 400px; height: 300px; margin: 50px; border: 1px solid #000;  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+  <script>
+    $(function(){
+      $('.draggable').draggable();
+      $('#droppable,.drop_inner').droppable({
+        accept : '#drag2',
+        greedy : 'true',
+        hoverClass : 'hover',
+        activeClass : 'active',
+        drop : function(){
+          $(this).addClass('drop')
+        },
+        out : function(){
+          $(this).removeClass('drop')
+        }
+      });
+    })
+  </script>
+</head>
+<body>
+  <div class="draggable" id="drag1">drag1</div>
+  <div class="draggable" id="drag2">drag2</div>
+  <div id="droppable">drop area
+    <div class="drop_inner">inner</div>
+  </div>
+</body>
+</html>

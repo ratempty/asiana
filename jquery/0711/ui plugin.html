@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery UI plugin</title>
+  <style>
+    .box1, .box2 , p{ background: #eddeed; border: 1px solid #aaa; width: 200px; height: 200px; }
+    .wrap{ width: 800px;height: 400px; padding: 50px; border: 1px solid #039; margin: 20px auto;}
+    .box{ background:#f30;}
+    .box3{ width:100px; height: 80px; background: antiquewhite;}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+  <script>
+    $(function(){
+      $('.box1').draggable({
+        'axis' : 'x' //x나 y 축으로 드래그 방향 제한
+      });
+      $('.box2').draggable({ 
+        'containment' : '.wrap' , 'cursor' : 'move' ,'cursorAt' :{ 'left' : 0 }
+      })
+      $('p').draggable({ 
+        'containment' : 'parent' ,
+        start : function(){ $(this).addClass('box') },
+        stop : function(){ $(this).removeClass('box') }
+      })
+      $('button').click(function(){
+        let btn = $(this).attr('class');
+        switch(btn){
+          case 'btn1' : $('.box1').draggable('destroy')        ;
+          break;
+          case 'btn2' : $('.box2').draggable('disable');
+          break;
+          case 'btn3' : 
+          $('.box1').draggbale();
+          $('.box2').draggbale();
+          break;
+        }
+      })
+      $('.box3').draggable({
+        'revert' : true ,
+        'helper' : 'clone'
+      });
+    })
+  </script>
+</head>
+<body>
+  <!-- 
+    jquery ui 사이트에서 파일 다운로드 (cdn)
+    jquery.com > download 페이지 > 중간부분 release.jquery.com 링크에서 cdn 사용
+  -->
+  <button class="btn1">드래그 삭제</button>
+  <button class="btn2">드래그 정지</button>
+  <button class="btn3">드래그 시작</button>
+  <div class="box1"></div>
+  <div class="box2"> box2 </div>
+  <div class="wrap">
+    <p>wrap 자손</p>
+  </div>
+  <div class="box3"></div>
+</body>
+</html>

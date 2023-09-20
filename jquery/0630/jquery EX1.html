@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery EX 1</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.ex1 dt').click(function(){
+        // $(this).next().slideToggle()
+        $('.ex1 dd').slideUp();
+        $(this).next().slideDown();
+      })
+      $('.ex2>.gnb>li>a').hover(function(){
+        $(this).next().slideDown();
+      },function(){$(this).next().slideUp()}
+      )
+      $('.ex3 .tabs li').click(function(){
+        let n = $(this).index();
+        $('.ex3 .con').hide();
+        $('.ex3 .con').eq(n).show();
+      })
+    })
+  </script>
+  <style>
+    *{margin: 0;padding: 0;list-style:none; color:inherit; text-decoration:none; }
+    .ex1{ width:700px; margin:20px auto; }
+    .ex1 dt { padding: 15px ; background:#ddd; border-bottom:1px solid #ccc; cursor:pointer; user-select: none; }
+    .ex1 dd { margin: 0; background: #0cf; display:none; }
+    .ex1 .box1{ padding: 15px;}
+    .ex2 a{ display:block; }
+    .ex2 .gnb{ display:flex; justify-content:center; }
+    .ex2 .gnb>li>a{ font-size: 20px; font-weight: bold; padding: 20px 30px ; }
+    .ex2 .sub{ border:1px solid #ccc; display:none; }
+    .ex3{ width: 800px; border:1px solid #ccc; margin:auto; }
+    .ex3>.tabs{ display:flex; background:#eee; }
+    .ex3>.tabs >li{ padding: 15px 25px; cursor:pointer;}
+    .ex3 .con { background:#fff; padding: 25px; height:300px; }
+    .ex3 .con:nth-child(2){ display: none; }
+  </style>
+</head>
+<body>
+  <h1>jquery 연습</h1>
+  <h2>EX 1</h2>
+  <div class="ex1">
+    <dl>
+      <dt>Q . 질문</dt>
+      <dd>
+        <div class="box1"> A .  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates consequatur vero neque ratione possimus, harum magnam ipsam distinctio. Atque ipsum commodi quo. Ipsam quia temporibus libero facilis, dolores placeat reprehenderit.</div>
+      </dd>
+      <dt>Q . 질문</dt>
+      <dd>
+        <div class="box1"> A .  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id veniam veritatis facilis eos ullam aspernatur.</div>
+      </dd>
+      <dt>Q . 질문</dt>
+      <dd>
+        <div class="box1"> A .  Lorem ipsum dolor sit. </div>
+      </dd>
+      <dt>Q . 질문</dt>
+      <dd>
+        <div class="box1"> A .  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero, quas eum sint eius, voluptas officia et cupiditate nostrum iusto, optio quos laboriosam unde? Expedita sint corrupti cupiditate et, quibusdam aspernatur fugit tempora delectus consequatur laborum fugiat temporibus veritatis, libero quasi facilis maxime totam error eaque omnis rerum. Unde, saepe perferendis?</div>
+      </dd>
+      <dt>Q . 질문</dt>
+      <dd>
+        <div class="box1"> A .  Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga tenetur sit impedit, repudiandae consequatur mollitia rerum.</div>
+      </dd>
+    </dl>
+  </div>
+  <h2>EX 2</h2>
+  <nav class="ex2">
+    <ul class="gnb">
+      <li>
+        <a href="#">home</a>
+        <ul class="sub">
+          <li>sub1</li>
+          <li>sub2</li>
+          <li>sub3</li>
+          <li>sub4</li>
+          <li>sub5</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">work</a>
+        <ul class="sub">
+          <li>sub1</li>
+          <li>sub2</li>
+          <li>sub3</li>
+          <li>sub4</li>
+          <li>sub5</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">about</a>
+        <ul class="sub">
+          <li>sub1</li>
+          <li>sub2</li>
+          <li>sub3</li>
+          <li>sub4</li>
+          <li>sub5</li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">contact</a>
+        <ul class="sub">
+          <li>sub1</li>
+          <li>sub2</li>
+          <li>sub3</li>
+          <li>sub4</li>
+          <li>sub5</li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <h2>EX 3</h2>
+  <div class="ex3">
+    <ul class="tabs">
+      <li>공지사항</li>
+      <li>새소식</li>
+    </ul>
+    <div class="contents">
+      <div class="con">공지사항 영역</div>
+      <div class="con">새소식 영역</div>
+    </div>
+  </div>
+</body>
+</html>

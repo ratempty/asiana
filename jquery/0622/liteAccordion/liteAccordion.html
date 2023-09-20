@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>liteAccordion</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/liteaccordion.jquery.js"></script>
+  <link rel="stylesheet" href="css/liteaccordion.css">
+  <script>
+    $(function(){
+      $('.accordion').liteAccordion({
+        slideSpeed : 500,                       // slide animation speed
+        onTriggerSlide : function(e) { $('figcaption').hide(); },        // callback on slide activate
+        onSlideAnimComplete : function() { $('figcaption').fadeIn(); },    // callback on slide anim complete
+
+        autoPlay : true,                       // automatically cycle through slides
+        pauseOnHover : true,                   // pause on hover
+        cycleSpeed : 4000,                      // time between slide cycles
+        easing : 'swing',                       // custom easing function
+
+        theme : 'stitch',                        // basic, dark, light, or stitch
+        rounded : true,       
+      });
+    })
+  </script>
+  <style>
+    figcaption{ position:absolute; right:30px; bottom:25px; background:#236; color:#fff; padding: 10px 25px !important; }
+  </style>
+</head>
+<body>
+  <div class="accordion">
+    <ol>
+      <li>
+        <h2><span>Slide One</span></h2>
+        <div>
+          <figure>
+            <img src="img-demo/1.jpg" alt="">
+            <figcaption> img - one </figcaption>
+          </figure>
+        </div>
+      </li>
+      <li>
+        <h2><span>Slide two</span></h2>
+        <div>
+          <figure>
+            <img src="img-demo/2.jpg" alt="">
+            <figcaption> img - two </figcaption>
+          </figure>
+        </div>
+      </li>
+      <li>
+        <h2><span>Slide three</span></h2>
+        <div>
+          <figure>
+            <img src="img-demo/3.jpg" alt="">
+            <figcaption> img - three </figcaption>
+          </figure>
+        </div>
+      </li>
+      <li>
+        <h2><span>Slide four</span></h2>
+        <div>
+          <figure>
+            <img src="img-demo/4.jpg" alt="">
+            <figcaption> img - four </figcaption>
+          </figure>
+        </div>
+      </li>
+      <li>
+        <h2><span>Slide five</span></h2>
+        <div>
+          <figure>
+            <img src="img-demo/5.jpg" alt="">
+            <figcaption> img - five </figcaption>
+          </figure>
+        </div>
+      </li>
+    </ol>
+  </div>
+</body>
+</html>

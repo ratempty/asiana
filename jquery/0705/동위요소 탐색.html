@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>동위요소 탐색</title>
+  <style>
+    #wrap{ margin: 30px;padding: 30px; border: 1px soid #f30; }
+    span{ color:#0cf; font-weight: bold; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.btn1').click(function(){
+        //siblings() : 선택자요소의 모든 형제요소 / siblings('특정요소') : 형제요소 중 특정요소 탐색
+        $('h2').siblings('h1').css('border','1px solid #03c')
+      })
+      $('.btn2').click(function(){
+        $('h2').next().css('color','#f30')
+      })
+      $('.btn3').click(function(){
+        $('h2').nextAll().css('border','1px solid #fc0')
+      })
+      $('.btn4').click(function(){
+        $('h2').nextUntil('div').css('border','1px solid #c0c')
+      })
+      $('.btn5').click(function(){
+        $('h3').prev().css('background','#fc0')
+      })
+      $('.btn6').click(function(){
+        $('h3').prevAll().css('border','1px solid #fc0')
+      })
+      $('.btn7').click(function(){})
+    })
+  </script>
+</head>
+<body>
+  <h1>동위요소 siblings()는 같은 부모를 가진 요소</h1>
+  <button class="btn1">siblings()</button>
+  <button class="btn2">next()</button>
+  <button class="btn3">nextAll()</button>
+  <button class="btn4">nextUntil('')</button>
+  <button class="btn5">prev()</button>
+  <button class="btn6">prevAll()</button>
+  <button class="btn7">prevUntil()</button>
+  <hr>
+  <div id="wrap">
+    <h1>h1(1)</h1>
+    <p>p(2)</p>
+    <h2>h2(3) <span>-next point</span></h2>
+    <p>p(4)</p>
+    <p>p(5)</p>
+    <ul>ul(6)
+      <li>li(6-1)</li>
+      <li>li(6-2)</li>
+      <li>li(6-3)</li>
+      <li>li(6-4)</li>
+    </ul>
+    <h3>h3(7) <span>-prev point</span></h3>
+    <p>p (8)</p>
+    <p>p (9)</p>
+    <div class="box"> div(10)
+      <p>p (10-1)</p>
+      <p>p (10-2)</p>
+      <p>p (10-3)</p>
+    </div>
+  </div>
+</body>
+</html>

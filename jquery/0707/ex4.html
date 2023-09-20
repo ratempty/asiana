@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex4</title>
+  <style>
+    @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+    *{ margin: 0;padding: 0; list-style: none; font-family:'pretendard-Regular'; }
+    .btn_on{ background:#f50 !important; }
+    .nav_on{ background:#222; color:#fff; }
+    header .visual_wrap{ position:relative; height: calc(100vh - 100px); overflow:hidden; }
+    header .visual_wrap img{ position:absolute; left:0; top:0; display:none; }
+    header .visual_wrap img:first-child{ display:block;}
+    header .visual_btns { position:Absolute; left:50%; bottom:200px; transform:translateX(-50%); }
+    header .visual_btns button{ width:30px; height:30px; background:#fff; border-radius:50%; }
+    header nav{ background:#fff; }
+    header nav ul{ display: flex; justify-content: center; }
+    header nav ul li{ padding: 0 70px; line-height: 80px; font-size: 30px; user-select: none; }
+    section{ min-height:100vh; padding: 100px 80px 80px ; }
+    section h2 { text-align: center; font-size: 30px; color:#fff; }
+    .page1{ background:#0cf; }
+    .page2{ background:#f60; }
+    .page3{ background:#cc3; }
+    .page4{ background:#c9c; }
+    .page5{ background:#cda; }
+    #gotop{ 
+      position:fixed; right:30px; bottom:30px;  background:#000; color:#fff; font-size: 40px; 
+      padding: 20px; width:80px; text-align: center; height:80px; border-radius:50%; line-height: 80px; text-transform: uppercase; user-select: none; cursor:pointer;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.visual_btns button').click(function(){
+        let i = $(this).index();
+        $(this).addClass('btn_on');
+        $('.visual_btns button').not(this).removeClass('btn_on');
+        $('.visual_wrap img').stop().fadeOut();
+        $('.visual_wrap img').eq(i).stop().fadeIn();
+      })
+      //scroll(function(){ 문서 또는 영역의 스크롤 위치가 변할 때 })
+      //offset().top ; offset().left; - top 또는 left 속성의 좌표값
+      //scrollTop() : 문서 또는 영역의 스크롤 위치값
+      let navTop = $('nav').offset().top;
+      let scrollTop;
+      $(window).scroll(function(){
+        scrollTop = $( window ).scrollTop();
+        if( scrollTop >= navTop ){ 
+          $('nav').css({'position':'fixed' , 'top':'0','left':'0' , 'right':'0'})
+        }else{
+          $('nav').css({'position':'static' })
+        }
+        for(let i = 0 ; i < $('nav li').length ; i++){
+          if( scrollTop >= $('section').eq(i).offset().top ){
+            $('nav li').removeClass('nav_on')
+            $('nav li').eq(i).addClass('nav_on');
+          }
+        }
+      })
+      $('nav li').click(function(){
+        let page_num = $(this).index();
+        $(this).addClass('nav_on');
+        $('nav li').not(this).removeClass('nav_on');
+        $('html,body').animate({
+          scrollTop : $('section').eq(page_num).offset().top-80
+        })
+      })
+      $('#gotop').click(function(){
+        $('html').animate({scrollTop : 0 })
+      })
+    })
+  </script>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <div class="visual_wrap">
+        <img src="img/img1.jpg" alt="">
+        <img src="img/img2.jpg" alt="">
+        <img src="img/img3.jpg" alt="">
+        <img src="img/img4.jpg" alt="">
+        <img src="img/img5.jpg" alt="">
+      </div>
+      <div class="visual_btns">
+        <button class="btn_on"></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+      <nav>
+        <ul>
+          <li class="nav_on">HOME</li>
+          <li>ABOUT</li>
+          <li>PORTFOLIO</li>
+          <li>WORK</li>
+          <li>CONTACT</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="page1">
+        <h2>HOME</h2>
+      </section>
+      <section class="page2">
+        <h2>ABOUT</h2>
+      </section>
+      <section class="page3">
+        <h2>PORTFOLIO</h2>
+      </section>
+      <section class="page4">
+        <h2>WORK</h2>
+      </section>
+      <section class="page5">
+        <h2>CONTACT</h2>
+      </section>
+    </main>
+  </div>
+  <div id="gotop">top</div>
+</body>
+</html>

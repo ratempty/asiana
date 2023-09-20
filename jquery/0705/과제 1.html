@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>슬라이드 과제</title>
+  <style>
+    body,section{ margin: 0;padding: 0; }
+    .wrap{ width:90vw; height:400px; margin: 100px 5vw; position:relative; }
+    .wrap .slides { width:100%; height:100%; overflow:hidden; }
+    .wrap .slider{ width:270vw; height:100%; display:flex; }
+    .wrap .slider img{ width:90vw; height:100%;}
+    .wrap .slides .page{ width:80px; height:30px; text-align: center; color:#fff; background:rgba(0,0,0,.15); position:absolute; left:32%; top:75%; line-height:30px; border-radius:15px ; }
+    .wrap .btns button{ border:0; background:#ededed; border-radius:50%; width:50px; height:50px ; position:absolute; top:175px; cursor:pointer;  }
+    .wrap .btns .prev{ left:30px; }
+    .wrap .btns .next{ right:30px; transform:rotate(180deg); }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      let pageNum = Number($('.page span').html());
+      $('.btns .prev').click(function(){
+        $('.slider img:last-child').insertBefore($('.slider img:first-child'))
+        $('.slider').css('margin-left','-90vw')
+        $('.slider').animate({
+          'margin-left' : '0vw'
+        })
+        pageNum--
+        if(pageNum<=0){
+          pageNum = 3;
+        }
+        $('.page span').text(pageNum)
+      })
+      $('.next').click(function(){
+        $('.slider').animate({
+          'margin-left' : '-90vw'
+        },function(){
+          $('.slider img:first-child').insertAfter($('.slider img:last-child'))
+          $('.slider').css('margin-left','0')
+        })
+        pageNum++;
+        if(pageNum>3){
+          pageNum = 1;
+        }
+        $('.page span').text(pageNum)
+      })
+    })
+  </script>
+</head>
+<body>
+  <section class="wrap">
+    <div class="slides">
+      <div class="slider">
+        <img src="image/banner_main_1.png" alt="">
+        <img src="image/banner_main_2.png" alt="">
+        <img src="image/banner_main_3.png" alt="">
+      </div>
+      <div class="page"><span>1</span> / 3</div>
+    </div>
+    <div class="btns">
+      <button class="prev"><img src="image/data_image_svg+xml,….svg" alt=""></button>
+      <button class="next"><img src="image/data_image_svg+xml,….svg" alt=""></button>
+    </div>
+  </section>
+</body>
+</html>

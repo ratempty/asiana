@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery animate</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.btn1').click(function(){
+        var a = $('#ex1').width();
+        $('#ex1').animate({'width': (a*2)}).animate({ 'height': (a) })
+      })
+      $('.btn2').click(function(){
+        $('#ex2').animate({'width':"700px"}).animate({'height':"500px"}).hide(500)
+      })
+      $('.btn3').on('click',function(){
+        $('#ex3').animate({'margin-left': '+=100'},400)
+      })
+      $('.btn4').click(function(){
+        $('#ex4').animate({
+          'width':'toggle' ,'font-size':'toggle'
+        })
+      })
+    })
+  </script>
+  <style>
+    button{}
+    .wrap{ font-size: 24px;margin-bottom: 20px;
+      min-height:300px; padding: 30px; background:#ddd;
+    }
+    .box{ width:300px; height:200px; display:flex; font-size: 30px; align-items: center; justify-content: center;}
+    #ex1{ background:#f70;}
+    #ex2{ background:#960fec;}
+    #ex3{ background:#960fec;}
+    #ex4{ background:#fec;}
+  </style>
+</head>
+<body>
+  <h1>animate method</h1>
+  <h2>ex 1</h2>
+  <button class="btn1">btn1</button>
+  <div class="wrap">
+    <div class="box" id="ex1">ex1</div>
+  </div>
+  <h2>ex 2</h2>
+  <button class="btn2">btn2</button>
+  <div class="wrap">
+    <div class="box" id="ex2">ex2</div>
+  </div>
+  <h2>ex 3</h2>
+  <button class="btn3">btn3</button>
+  <div class="wrap">
+    <div class="box" id="ex3">ex3</div>
+  </div>
+  <h2>ex 4</h2>
+  <button class="btn4">btn4</button>
+  <div class="wrap">
+    <div class="box" id="ex4">ex4</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script>
+    $(function(){
+      const nav = $('#navbar>ul');
+      const navbar = $('#navbar');
+      nav.on('mouseenter',function(){
+        $('.sub,.navbg').stop().slideDown(350)
+      })
+      navbar.on('mouseleave',function(){
+        $('.sub,.navbg').stop().slideUp(350)
+      })
+    })
+  </script>
+  <style>
+    body,nav,ul,li{margin: 0;padding: 0;}
+    ul{list-style:none;}
+    a{text-decoration:none;}
+    #navbar{ width:100%; height:50px; background:#236; position:relative;}
+    #navbar>ul{ width:600px; height:50px; margin: 0 auto; position:relative; z-index: 100; display:flex; }
+    #navbar>ul>li{ width:150px; height:50px; position:relative; text-align:center; }
+    #navbar>ul>li>a{ display:block; line-height:50px; font-weight:bold; color:#222; }
+    #navbar>ul>li>.sub{ position:absolute; left:0; top:50px; height:200px; width:150px; background:#9cf; display:none; }
+    #navbar>.navbg{ background:#fc0; position:absolute; left:0; top:50px; width:100%; height:200px; display:none; }
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <ul>
+      <li><a href="#">main1</a><div class="sub"></div></li>
+      <li><a href="#">main2</a><div class="sub"></div></li>
+      <li><a href="#">main3</a><div class="sub"></div></li>
+      <li><a href="#">main4</a><div class="sub"></div></li>
+    </ul>
+    <div class="navbg"></div>
+  </nav>
+</body>
+</html>

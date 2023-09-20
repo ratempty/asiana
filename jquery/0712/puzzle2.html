@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>puzzle</title>
+  <style>
+    body{margin: 0;padding: 0;background:#555;}
+    img{ display:block; }
+    .puzzle .piece{ position:absolute; z-index: 100; }
+    .panel{ width: 282px; height: 282px; border:1px solid #f30; position:absolute; left: calc(50% - 141px); top:120px; display:flex; flex-wrap:wrap; align-content:flex-start; }
+    .panel div { margin: 1px; opacity:.5; }
+    .shadow{ box-shadow: 5px 5px 10px 0px rgba(0,0,0,.8); }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+  <script>
+    $(function(){
+      let $piece = $('.puzzle .piece');
+      let $panel = $('.panel div');
+      let count = 0; 
+      $piece.addClass('shadow');
+      $piece.each(function(){
+        let p1 = Math.floor(Math.random()*300);
+        let p2 = Math.floor(Math.random()*300);
+        $(this).css({ 'left': p1 ,'top': p2 })
+      })
+      $piece.draggable({ revert : 'invalid', });
+      $panel.each(function(){
+        let pieceNum = $(this).index();
+        let $pieceElm = $piece.eq(pieceNum);
+        $(this).droppable({
+          accept: $pieceElm ,
+          drop:function(){
+            let tx = $(this).offset().left;
+            let ty = $(this).offset().top;
+            $pieceElm.animate(
+              {left : tx , top : ty},
+              300,
+              'easeInOutBack',
+              function(){
+                count++;
+                if(count == $piece.length){
+                  $piece.hide();
+                  $panel.animate({ 'margin':0, 'opacity':1 })
+                }
+              }
+            )
+          }
+        });
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="puzzle">
+    <div class="piece"><img src="img/puzzle0.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle1.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle2.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle3.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle4.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle5.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle6.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle7.jpg" alt=""></div>
+    <div class="piece"><img src="img/puzzle8.jpg" alt=""></div>
+  </div>
+  <div class="panel">
+    <div><img src="img/puzzle0.jpg" alt=""></div>
+    <div><img src="img/puzzle1.jpg" alt=""></div>
+    <div><img src="img/puzzle2.jpg" alt=""></div>
+    <div><img src="img/puzzle3.jpg" alt=""></div>
+    <div><img src="img/puzzle4.jpg" alt=""></div>
+    <div><img src="img/puzzle5.jpg" alt=""></div>
+    <div><img src="img/puzzle6.jpg" alt=""></div>
+    <div><img src="img/puzzle7.jpg" alt=""></div>
+    <div><img src="img/puzzle8.jpg" alt=""></div>
+  </div>
+</body>
+</html>

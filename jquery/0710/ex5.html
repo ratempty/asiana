@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ex5</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <style>
+    ul,li{margin: 0;padding: 0;list-style: none;}
+    button{ cursor:pointer; background:none; border:0; }
+    .btn_on{ background:#F00 !important; }
+    .ex1 .slide_wrap{ border:1px solid #000; position:relative; }
+    .ex1 .slide_wrap .slider{ background:#eee; padding-top: 45%; height: 0; position:relative; overflow:hidden; }
+    .ex1 .slide_wrap .slider img{ display: none; position:absolute; left:0; top:0; width:100%; }
+    .ex1 .slide_wrap .slider img:first-child{ display: block; }
+    .slide_wrap .btns{ position:absolute; left:0; right:0; bottom:20px; text-align: center; }
+    .slide_wrap .btns button{ width: 15px; height: 15px; border-radius: 50%; background:#fff; margin: 0 3px; }
+    .ex1 .slide_wrap .btns .play_btn{ width: 36px; height: 36px;  }
+    .ex1 .slide_wrap .btns #start{ display:none; }
+
+    .ex2 .slider_wrap{ width:665px; height: 355px; overflow:hidden; }
+    .ex2 .slider_wrap ul{ width:calc(665px * 6); display:flex; }
+    .ex2 .slider_wrap ul li { width: 665px; height: 355px; text-indent:30px; }
+    .ex2 .slider_wrap ul li span{ font-size: 60px; color:#fff;  }
+    .ex2 .btns { font-size: 24px; line-height: 30px; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      let currentSlide = 0, nextSlide;
+      let $ex1Obj = $('.ex1').find('img');
+      let $ex1Btn = $('.ex1').find('button');
+      let slide1 = setInterval( ex1Fn , 1000);
+      // $('.ex1 .slider').hover(function(){
+      //   clearInterval(slide1)
+      // },function(){
+      //   slide1 = setInterval(ex1Fn,1000);
+      // })
+      $('.ex1').find('.play_btn').click(function(){
+        let btnName = $(this).attr('id');
+        $(this).hide();
+        if(btnName == 'stop'){
+          clearInterval(slide1);
+          $('#start').show();
+        }else if(btnName == 'start'){
+          slide1 = setInterval(ex1Fn,1000);
+          $('#stop').show();
+        }
+      })
+      function ex1Fn(){
+        currentSlide++;
+        nextSlide = currentSlide % $ex1Obj.length;
+        $ex1Obj.fadeOut();
+        $ex1Obj.eq(nextSlide).fadeIn();
+        $ex1Btn.removeClass('btn_on');
+        $ex1Btn.eq(nextSlide).addClass('btn_on');
+      }
+      let ex2Num ;
+      let $ex2Obj = $('.ex2').find('li')
+      for(let i = 0; i<$ex2Obj.length ; i++){
+        $ex2Obj.eq(i).css({ 'background' : 'url(img/rolling_img_'+ (i+1) +'.jpg)'})
+      }
+      // $('.ex2 button').click(function(){
+      //   let btnsName = $(this).attr('class');
+      //   if(btnsName == 'prev'){
+      //     $('.ex2 ul li:last-child').insertBefore('.ex2 ul li:first-child');
+      //     $('.slider_wrap ul').css({'marginLeft': '-665px' })
+      //     $('.slider_wrap ul').animate({'marginLeft': 0 });
+      //   }else{
+      //     $('.ex2 .slider_wrap ul').animate({
+      //     'marginLeft' : '-665'
+      //   },function(){
+      //     $('.ex2 .slider ul').find('li:first-child').insertAfter($('.ex2 .slider ul').find('li:last-child'))
+      //     $('.ex2 .slider ul').css({'marginLeft':'0'})
+      //   })
+      //   }
+      // })
+      $('.ex2 .btns button').click(function(){
+        let btnsName =$(this).attr('class')
+        ex2Fn(btnsName)
+      })
+      let ex2Width = $('.ex2 .slider_wrap li').width();
+      let slide2 = setInterval(ex2FnNext,3000)
+      let $ul = $('.ex2 .slider_wrap ul')
+      function ex2FnPrev(){
+        $ul.find('li:last-child').insertBefore($ul.find('li:first-child'))
+        $ul.css({'margin-left' : -ex2Width })
+        $ul.animate({'margin-left' : 0})
+      }
+      function ex2Fn(s){
+        // if(s == 'next'){
+        //   ex2FnNext()
+        // }else{
+        //   $ul.find('li:last-child').insertBefore($ul.find('li:first-child'))
+        //   $ul.css({'margin-left' : -ex2Width })
+        //   $ul.animate({'margin-left' : 0})
+        // }
+        switch(s){
+          case 'next' : ex2FnNext(); break;
+          case 'prev' : ex2FnPrev(); break;
+        }
+      }
+      function ex2FnNext(){
+        $('.ex2 .slider_wrap ul').animate({
+          'margin-left': -ex2Width
+        },function(){
+          $(this).find('li:first-child').insertAfter($(this).find('li:last-child'))
+          $(this).css({'margin-left':0})
+        })
+      }
+    })
+  </script>
+</head>
+<body>
+  <h1>슬라이드 연습</h1>
+  <h2>연습 1</h2>
+  <div class="ex1">
+    <div class="slide_wrap">
+      <div class="slider">
+        <img src="img/img1.jpg" alt="">
+        <img src="img/img2.jpg" alt="">
+        <img src="img/img3.jpg" alt="">
+        <img src="img/img4.jpg" alt="">
+        <img src="img/img5.jpg" alt="">
+      </div>
+      <div class="btns">
+        <button class="btn_on"></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button class="play_btn" id="start">
+          <span class="material-symbols-outlined">play_arrow</span>
+        </button>
+        <button class="play_btn" id="stop">
+          <span class="material-symbols-outlined">pause</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <h2>연습 2</h2>
+  <div class="ex2">
+    <div class="slider_wrap">
+      <ul>
+        <li><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>6</span></li>
+      </ul>
+    </div>
+    <div class="btns">
+      <button class="prev"><span class="material-symbols-outlined">arrow_back</span></button>
+      <span class="current">1</span>
+      <span>/</span>
+      <span class="total">6</span>
+      <button class="next"><span class="material-symbols-outlined">arrow_forward</span></button>
+    </div>
+  </div>
+  <script>
+    let now = new Date();
+    let y = now.getFullYear();
+    let m = now.getMonth();
+    let w = now.getDay();
+    /*
+      switch( 비교할 값 ){
+        case '값1' : 실행문
+        case '값2' :
+          ...
+        case '값n' :
+        default :
+      }
+    */
+    switch(w){
+      case 0 : w = '일' ; break;
+      case 1 : w = '월' ; break;
+      case 2 : w = '화' ; break;
+      case 3 : w = '수' ; break;
+      case 4 : w = '목' ; break;
+      case 5 : w = '금' ; break;
+      case 6 : w = '토' ; break;   
+    }
+    console.log(w)
+  </script>
+</body>
+</html>

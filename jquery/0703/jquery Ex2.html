@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jquery EX2</title>
+  <style>
+    *{ margin: 0;padding: 0; list-style:none; text-decoration:none;  color:inherit; }
+    .ex1>ul{ display:flex; width:1600px; flex-wrap:wrap; margin:auto; }
+    .ex1 li{ width:533px; height:400px; position:relative; overflow:hidden; }
+    .ex1 li>a{ display:block; height:100%; background:#222; opacity:0; }
+    .ex1 li:nth-child(1){ background:url("img/img_main_content1.png") no-repeat ; }
+    .ex1 li:nth-child(2){ background:url("img/img_main_content2.png") no-repeat ; }
+    .ex1 li:nth-child(3){ background:url("img/img_main_content3.png") no-repeat ; }
+    .ex1 li:nth-child(4){ background:url("img/img_main_content4.png") no-repeat ; }
+    .ex1 li:nth-child(5){ background:url("img/img_main_content5.png") no-repeat ; }
+    .ex1 li:nth-child(6){ background:url("img/img_main_content6.png") no-repeat ; }
+    .ex1 .txt{ color: #fff; position:absolute; left:35px; top:400px; }
+    .ex1 .txt *{ display:block; }
+    .ex1 .txt i{ width:23px; height:23px; background:url("img/sprite.png") no-repeat -199px -129px; }
+    .ex1 .txt strong{ margin-top: 34px; margin-bottom: 10px; font-size: 24px; }
+    .ex1 .txt span{}
+    .ex2{ position:fixed; width:200px; background:#ffc; height:100%; right:-200px; top:0; }
+    .ex2>button{ font-size: 30px; border:0; width:50px; height:50px; position:absolute; left:-50px; top:50%; transform:translateY(-50%); cursor:pointer; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.ex1 li').hover(function(){
+        $(this).children('a').stop().animate({opacity:.3},300);
+        $(this).children('.txt').stop().animate({top:'250px'},300);
+      },function(){
+        $(this).children('a').stop().animate({opacity:0},300);
+        $(this).children('div').stop().animate({top:'400px'},200);
+      })
+      let n = -200;
+      $('.ex2>button').click(function(){
+        n = (n == -200)? 0 : -200
+        $('.ex2').animate({'right':n +'px'},300);
+      })
+    })
+  </script>
+</head>
+<body>
+  <h1>연습</h1>
+  <h2> ex 1 </h2>
+  <div class="ex1">
+    <ul>
+      <li>
+        <a href="#"></a>
+        <div class="txt">
+          <i></i>
+          <strong>N로봇</strong>
+          <span>가장 최신의 로봇 기술, 네이버 로봇</span>
+        </div>
+      </li>
+      <li>
+        <a href="#"></a>
+        <div class="txt">
+          <i></i>
+          <strong>클로바 노트</strong>
+          <span>눈으로 보며 듣는 음성기록</span>
+        </div>
+      </li>
+      <li>
+        <a href="#"></a>
+        <div class="txt">
+          <i></i>
+          <strong>네이버 페이앱</strong>
+          <span>현장결제 , 멤버십적립 , 송금까지한번에</span>
+        </div>
+      </li>
+      <li>
+        <a href="#"></a>
+        <div class="txt">
+          <i></i>
+          <strong>네이버 웨일</strong>
+          <span>인터넷의 새로운 시작</span>
+        </div>
+      </li>
+      <li>
+        <a href="#"></a>
+        <div class="txt">
+          <i></i>
+          <strong>네이버 웍스</strong>
+          <span>네이버웍스는 비즈니스 커뮤니케이션을 넓힙니다.</span>
+        </div>
+      </li>
+      <li>
+        <a href="#"></a>
+        <div class="txt">
+          <i></i>
+          <strong>네이버 클라우드</strong>
+          <span>모든 비즈니스를 가능하게 하는 네이버 클라우드</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="ex2">
+    <button>&times;</button>
+    오른쪽 퀵메뉴
+  </div>
+</body>
+</html>

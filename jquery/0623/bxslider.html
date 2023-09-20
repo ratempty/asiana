@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bx slider plugin</title>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="js/jquery.bxslider.js"></script>
+  <link rel="stylesheet" href="css/jquery.bxslider.css">
+  <script>
+    $(function(){
+      $(".slider").bxSlider({
+        auto:true,
+        speed:300,
+        mode:'vertical',
+      });
+    })
+  </script>
+  <style>
+    body,section,div{ margin: 0;padding: 0;}
+    img{ display:block; border:0 none; width:100%; height:auto; }
+    .slider_container{ width:100%; max-width:1400px; box-sizing:border-box; margin: 80px auto; border-top:2px solid #06f; border-bottom:2px solid #06f; }
+    .bx-wrapper{ border:0 none; margin-bottom: 0; box-shadow:none; }
+    .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto{ bottom:30px; }
+    .bx-wrapper .bx-pager.bx-default-pager a{ width:20px ; height:20px; margin: 0 10px; border-radius:20px;}
+    .bx-wrapper .bx-pager.bx-default-pager a:hover, .bx-wrapper .bx-pager.bx-default-pager a.active, .bx-wrapper .bx-pager.bx-default-pager a:focus { color:#06f;}
+    .bx-wrapper .bx-pager.bx-default-pager a {color:#06f;}
+  </style>
+</head>
+<body>
+  <section class="slider_container">
+    <div class="slider">
+      <div><a href="#"><img src="images/001.jpg" alt=""></a></div>
+      <div><a href="#"><img src="images/002.jpg" alt=""></a></div>
+      <div><a href="#"><img src="images/003.jpg" alt=""></a></div>
+      <div><a href="#"><img src="images/004.jpg" alt=""></a></div>
+    </div>
+  </section>
+</body>
+</html>

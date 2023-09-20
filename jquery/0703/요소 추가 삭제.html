@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>요소 추가 삭제</title>
+  <style>
+    ol{ border:1px solid #06f;}
+    ul{ border:1px solid #f60;}
+    h1{ background:#f9f; height:50px; cursor:default; }
+    h2{ background:#ff0; height:50px; cursor:default; }
+    h3{ background:#9c3; height:50px; }
+    p{ background:#0cf; line-height:40px; }
+    .ex3{ width:533px; height:400px; margin:  auto; overflow:hidden; position:relative; }
+    .ex3 ul { margin: 0;padding: 0; list-style:none; width:1600px; display:flex; }
+    .ex3 .dot_btns{ height:30px; position:absolute; left:0; right:0; bottom:20px; text-align:center; }
+    .ex3 .dot_btns button{ border:0; width:20px; height:20px; margin-right:10px; border-radius:50%; cursor:pointer; }
+    .ex3 .dot_btns button.on{ background:#000;}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      //append() : 선택 요소의 막내 요소로 추가
+      //prepend() : 선택 요소의 첫째 요소로 추가
+      //after() : 선택 요소의 동생 요소로 추가
+      //before() : 선택 요소의 형 요소로 추가
+      $('body').append('<h1>heading - 1</h1>');
+      $('body').append('<h2>heading - 2</h2>');
+      $('body').prepend('<p>몇번째인가요</p>');
+      $('body').append('<ol class="ex1"></ol>');
+      for(let i=0; i<4; i++){
+        $('.ex1').append('<li>items - '+(i+1)+'</li>');
+      };
+      $('.ex1').after('<ul class="ex2"></ul>');
+      $('.ex2').before('<button class="btn1"> btn1 </button>');
+      let k = 0;
+      $('.btn1').click(function(){
+        k++;
+        $('.ex2').append('<li> list'+(k)+'</li>')
+      })
+      //remove() : 선택 요소 자체를 제거
+      //empty() : 선택 요소 내부 컨텐츠 제거 
+      $('h1').click(function(){
+        $(this).remove();
+      })
+      $('h2').click(function(){
+        $(this).empty();
+      })
+      $('body').append('<p>p text</p>')
+      $('h2').after('<h3>h3 text</h3>')
+      for(let j=0;j<$('.img_slider img').length;j++){
+        $('.dot_btns').append('<button></button>')
+      }
+      $('.dot_btns button').eq(0).addClass('on')
+      $('.ex3 .dot_btns button').click(function(){
+        $(this).addClass('on');
+        $('.dot_btns button').not(this).removeClass('on')
+      })
+    })
+  </script>
+</head>
+<body>
+  <div class="ex3">
+    <ul class="img_slider">
+      <li><img src="img/img_main_content1.png" alt=""></li>
+      <li><img src="img/img_main_content2.png" alt=""></li>
+      <li><img src="img/img_main_content3.png" alt=""></li>
+      <li><img src="img/img_main_content4.png" alt=""></li>
+      <li><img src="img/img_main_content5.png" alt=""></li>
+      <li><img src="img/img_main_content6.png" alt=""></li>
+    </ul>
+    <div class="dot_btns"></div>
+  </div>
+</body>
+</html>

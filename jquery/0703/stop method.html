@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stop method</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    // stop( stopAll , goteEnd) > 인수값 boolean타입
+    // stopAll : Queue(대기열)에있는 모든 애니메이션을 멈춤
+    // gotoEnd : 진행중이던 애니메이션을 멈추고 애니메이션의 마지막으로 이동
+    $(function(){
+      $('.start').click(function(){
+        $('.box').animate({ 'width' : '600px' },4000)
+        .animate({'height' : '600px'},4000)
+        .animate({'opacity' : '0.2'})
+      })
+      $('.stop1').click(function(){
+        $('.box').stop(false,false)
+      })
+      $('.stop2').click(function(){
+        $('.box').stop(false,true)
+      })
+      $('.stop3').click(function(){
+        $('.box').stop(true,true)
+      })
+      $('.stop4').click(function(){
+        $('.box').stop(true,false)
+      })
+      $('.stop5').click(function(){
+        $('.box').stop()
+      })
+    })
+  </script>
+  <style>
+    button{ font-size: 24px; }
+    hr{margin: 30px 0 ;}
+    .outer{border:1px solid #f60; width:600px; height:600px; }
+    .box{ width:200px; height:200px; background:#fc0;}
+  </style>
+</head>
+<body>
+  <button class="start">start</button>
+  <button class="stop1">stop(false,false)</button>
+  <button class="stop2">stop(false,true)</button>
+  <button class="stop3">stop(true,true)</button>
+  <button class="stop4">stop(true,false)</button>
+  <button class="stop5">stop()</button>
+  <hr>
+  <div class="outer">
+    <div class="box">box</div>
+  </div>
+</body>
+</html>

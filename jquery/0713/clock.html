@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>시계</title>
+  <style>
+    @font-face{
+      font-family: 'digital';
+      src: url('img/DS-DIGIB.TTF');
+    }
+    .digital_clock{ 
+      width:600px; height:314px; font-family: 'digital'; color:#fff; background:url("img/digital_panel.jpg") no-repeat; 
+      font-size:60px; text-align: center; line-height: 250px; font-style:italic;
+    }
+    .ap { font-size:30px; }
+    .analog_clock{ width: 500px; height: 500px; position:relative; }
+    .analog_clock>div{ position:absolute; left:0; top:0; }
+    .h{ transform: rotate(0deg); }
+    .m{ transform: rotate(0deg); }
+    .s{ transform: rotate(0deg); }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(function(){
+      const time = function(){
+        const now = new Date();
+        let nowh = now.getHours();
+        let nowm = now.getMinutes();
+        let nows = now.getSeconds(); 
+        if( nowh >= 12 ){
+          if( nowh != 12){ nowh - 12 }
+          $('.ap').text('PM')
+        }else{
+          $('.ap').text('AM')
+        }
+        $('.hour').text( nowh );
+
+        if( nowm < 10){
+          $('.min').text('0'+nowm)
+        }else{
+          $('.min').text(nowm);
+        }
+
+        if( nows < 10){
+          $('.second').text('0'+nows)
+        }else{
+          $('.second').text(nows);
+        }
+        // $('.hour').text( nowh.toString().padStart(2,'0'))
+        // $('.min').text( nowm.toString().padStart(2,'0'))
+        // $('.second').text( nows.toString().padStart(2,'0'))
+      }
+      time();
+      const callNow = setInterval( time , 1000 )
+
+      const nowTime = function(){
+        const Now = new Date();
+        let nowH = Now.getHours();
+        let nowM = Now.getMinutes();
+        let nowS = Now.getSeconds(); 
+        let Hdeg = nowH * 30
+        let Mdeg = nowM * 6
+        let Sdeg = nowS * 6
+        $('.h').css({'transform':'rotate(' + Hdeg +'deg)' })
+        $('.m').css({'transform':'rotate(' + Mdeg +'deg)' })
+        $('.s').css({'transform':'rotate(' + Sdeg +'deg)' })
+        console.log(Hdeg)
+      }
+      nowTime();
+      setInterval(nowTime ,1000)
+    })
+  </script>
+</head>
+<body>
+  <h1>시계</h1>
+  <h2>디지털 시계</h2>
+  <div class="digital_clock"><span class="ap">AM</span> <span class="hour">12</span> : <span class="min"> 00 </span> : <span class="second">00</span></div>
+  <h2>아날로그 시계</h2>
+  <div class="analog_clock">
+    <div class="clock"><img src="img/clock_panel.gif" alt=""></div>
+    <div class="h"><img src="img/hour_hand.png" alt=""></div>
+    <div class="m"><img src="img/min_hand.png" alt=""></div>
+    <div class="s"><img src="img/sec_hand.png" alt=""></div>
+  </div>
+</body>
+</html>

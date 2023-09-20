@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>특정요소 탐색</title>
+  <style>
+    .box{ margin: 30px;padding: 30px;border:1px solid #ccc; }
+    p:first-child{ font-weight: bold; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      // first() : 구조와 상관 없이 선택자 요소 중 첫번째 요소
+      $('p').first().css('color','#f30')
+      //last() : 구조와 상관 없이 선택자 요소 중 마지막 요소
+      $('li').last().css('fontWeight','bold')
+      $('.ex1').last().css('color','#0f3')
+      //eq(index) : 구조와 상관 없이 선택자 요소 중 index번째 요소 0부터시작
+      $('p').eq(3).css('fontSize','24px')
+      $('.ex1').eq(0).css('font-style','italic')
+      //filter('조건') : 선택자 요소 중 필터 조건에 해당하는 요소
+      $('li').filter('.ex1').css('text-decoration','underline')
+      $('p').filter(':last-of-type').css('color','#f69')
+      //not('조건') : 선택자 요소 중 조건에 해당하지 않는 요소
+      $('li').not('.ex1').css('background','#ccc')
+      //has('조건') : 선택자 요소 중 조건을 자손으로 가지고 있는 요소 
+      $('p').has('b').css('textAlign','right')
+      //is('조건') : 선택자 요소가 조건에 해당하는지 확인해서 boolean타입으로 반환 
+      $('li').click(function(){
+        if($(this).children().is('b')){ alert('b 포함') }
+      })
+      //문자열 .slice(start,end) : 문자열에서 인덱스 번호에 해당하는 글자를 자름 
+      // $(선택자).slice(start,end) : 선택자 요소 중 인덱스 번호에 해당하는 요소를 탐색 
+      let txt1 = '안녕하세요~ 반갑습니다.'
+      console.log(txt1.slice(3,6))
+      $('p').slice(1,3).css('fontSize','30px')
+      $('body').append('<h2>h2</h2>')
+      txt1 = $('p').text().slice(0,3);
+      $('h2').text(txt1)
+      alert($('h1').text())
+    })
+  </script>
+</head>
+<body>
+  <h1>heading -1 </h1>
+  <p class="ex1">paragraph <b>"BOLD"</b></p>
+  <p>paragraph <b>"BOLD"</b></p>
+  <p class="ex1">paragraph</p>
+  <ul>
+    <li>list item</li>
+    <li>list item <b>"BOLD"</b></li>
+    <li class="ex1">list item</li>
+    <li>list item</li>
+  </ul>
+  <div class="box">
+    <p>paragraph</p>
+    <p>paragraph</p>
+    <p class="ex1">paragraph <b>"BOLD"</b></p>
+    <ul>
+      <li>list item</li>
+      <li>list item <b>"BOLD"</b></li>
+      <li>list item</li>
+      <li>list item <b>"BOLD"</b></li>
+    </ul>
+  </div>
+</body>
+</html>

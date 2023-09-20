@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>연습 3</title>
+  <style>
+    body{ margin-bottom: 50px;}
+    section{ padding: 100px 80px; }
+    .on{ background:#f30 !important; }
+    .ex1{ background:#ededed; }
+    .slider_wrap{ width:590px;  margin: auto;}
+    .ex1 .slider{ width:590px; height:200px; overflow:hidden; border:2px solid #f30;}
+    .ex1 .slider .img_list{ width:calc(590px * 5); display:flex; }
+    .ex1 .dot_btns { margin-top: 20px; text-align: center; }
+    .ex1 .dot_btns button{ width:20px; height:20px; border:0; background:#000; border-radius:50%; margin:10px 3px ; cursor:pointer; }
+
+    .wrapper{ width:665px; margin:auto; }
+    .wrapper .slides{ width:665px; height:350px; overflow:hidden; }
+    .wrapper .slides .slide{ width:calc(665px * 5 ); display:flex; }
+    .wrapper .btns{ margin-top: 20px; text-align: center; }
+    .wrapper .btns button{ width:20px; height:20px; border:0; background:#000; border-radius:50%; margin:10px 3px ; cursor:pointer; }
+
+    .ex3 .slider_wrap{ width:590px;  margin: auto; position:relative; }
+    .ex3 .slider{ width:590px; height:200px; overflow:hidden; border:2px solid #f30;}
+    .ex3 .slider .img_list{ width:calc(590px * 5); display:flex; }
+    .ex3 .dot_btns { margin-top: 20px; text-align: center; }
+    .ex3 .dot_btns button{ width:20px; height:20px; border:0; background:#000; border-radius:50%; margin:10px 3px ; cursor:pointer; }
+    /* .ex3 .slider_wrap .dir_btns{} */
+    .ex3 .slider_wrap .dir_btns button{ position:absolute; top:50%; transform:translateY(-50%); }
+    .ex3 .slider_wrap .dir_btns .prev{ left: -50px ; }
+    .ex3 .slider_wrap .dir_btns .next{ right: -50px ; }
+
+    .ex4{ background:#222; color:#fff; }
+    .ex4 .slider_wrap{ width:1500px; height:500px; margin:auto; position:relative; }
+    .ex4 .slider { width:1500px; overflow:hidden; height:500px; }
+    .ex4 .slider ul{ display:flex; list-style:none; padding:0; }
+    .ex4 .slider ul li { margin-right: 20px;}
+    .ex4 .slider li p { font-size: 20px; line-height: 38px; }
+
+    .ex4 .slider_wrap button{ position:absolute; top:50%; transform:translateY(-50%); }
+    .ex4 .slider_wrap .pv{ left:-70px ;}
+    .ex4 .slider_wrap .nx{ right:-70px; }
+
+    .ex5 { margin-bottom: 100px;}
+    .ex5 .sliderwrap{ width: 500px; height: 30px; background:#eee; margin:50px auto; line-height:30px; text-align: center;}
+    .ex5 .newswrap{ height:30px; overflow:hidden;}
+    .ex5 ol { width:500px; height:150px; list-style:none; margin: 0; padding: 0; }
+    .ex5 ol li{ width:500px; height:30px; line-height: 30px; }
+    .ex5 .roop_btns button { transform:rotate(90deg); margin:10px; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <script>
+    $(function(){
+      $('.ex1 .dot_btns button').click(function(){
+        let n = $(this).index();
+        $('.img_list').animate({'marginLeft':(-590 * n )})
+        $('.dot_btns button').removeClass('on')
+        $(this).addClass('on')
+      })
+      $('.btns button').click(function(){
+        let t = $(this).index();
+        $('.slide').animate({'marginLeft':(-665 * t )})
+        $('.btns button').removeClass('on')
+        $(this).addClass('on')
+      })
+      let n3 = 0;
+      $('.ex3 .next').click(function(){
+        console.log(n3)
+        //( n3>=4 )? n3 = n3 : n3++;
+        if(n3 >= 4){
+          n3 = n3 ;
+        }else{
+          n3++;
+          if(n3 == 4){ $(this).hide(); }
+          if(n3 == 1){ $('.prev').show(); }
+        }
+        $('.ex3 .dot_btns button').removeClass('on')
+        $('.ex3 .dot_btns button').eq(n3).addClass('on')
+        $('.ex3 .img_list').animate({ 'marginLeft' : (-590 * n3)  })
+      })
+      $('.ex3 .prev').click(function(){
+        console.log(n3)
+        if(n3 <= 0){
+          n3 = n3 ;
+        }else{
+          n3--;
+          if(n3 == 0){ $(this).hide(); }
+          if(n3 == 3){ $('.next').show(); }
+        }
+        $('.ex3 .dot_btns button').removeClass('on')
+        $('.ex3 .dot_btns button').eq(n3).addClass('on')
+        $('.ex3 .img_list').animate({ 'marginLeft' : (-590 * n3)  })
+      })
+      let move = $('.ex4 .slider li').outerWidth(true);
+      let s = 0 ;
+      $('.ex4 .nx').click(function(){
+        $('.ex4 .slider ul').animate({
+          'marginLeft' : '-760'
+        },function(){
+          $('.ex4 .slider ul').find('li:first-child').insertAfter($('.ex4 .slider ul').find('li:last-child'))
+          $('.ex4 .slider ul').css('marginLeft','0')
+        })
+      })
+      $('.ex4 .pv').click(function(){
+        $('.ex4 .slider ul').find('li:last-child').insertBefore($('.ex4 .slider ul').find('li:first-child'))
+        $('.ex4 .slider ul').css({'marginLeft':'-760px'})
+        $('.ex4 .slider ul').animate({'marginLeft' : '0'})
+      })
+      $('.ex5 .nextb').click(function(){
+        $('.ex5 ol').animate({'marginTop':'-30px'},function(){
+          $('.ex5 ol li:first-child').insertAfter('.ex5 ol li:last-child');
+          $('.ex5 ol').css('marginTop','0')
+        })
+      })
+      $('.ex5 .prevb').click(function(){
+        $('.ex5 ol li:last-child').insertBefore('.ex5 ol li:first-child');
+        $('.ex5 ol').css('marginTop','-30px')
+        $('.ex5 ol').animate({'marginTop':'0px'})
+      })
+    })
+  </script>
+</head>
+<body>
+  <h1>이미지 슬라이드</h1>
+  <section class="ex1">
+    <h2>슬라이드 1</h2>
+    <div class="slider_wrap">
+      <div class="slider">
+        <div class="img_list">
+          <img src="img/banner_1.jpg" alt="">
+          <img src="img/banner_2.jpg" alt="">
+          <img src="img/banner_3.jpg" alt="">
+          <img src="img/banner_4.jpg" alt="">
+          <img src="img/banner_5.jpg" alt="">
+        </div>
+      </div>
+      <div class="dot_btns">
+        <button type="button" class="on"></button>
+        <button type="button"></button>
+        <button type="button"></button>
+        <button type="button"></button>
+        <button type="button"></button>
+      </div>
+    </div>
+  </section>
+  <section class="ex2">
+    <h2>슬라이드 2</h2>
+    <div class="wrapper">
+      <div class="slides">
+        <div class="slide">
+          <img src="img/rolling_img_1.jpg" alt="">
+          <img src="img/rolling_img_2.jpg" alt="">
+          <img src="img/rolling_img_3.jpg" alt="">
+          <img src="img/rolling_img_4.jpg" alt="">
+          <img src="img/rolling_img_5.jpg" alt="">
+        </div>
+      </div>
+      <div class="btns">
+        <button class="on"></button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+      </div>
+    </div>
+  </section>
+  <section class="ex3">
+    <h2>슬라이드 3</h2>
+    <div class="slider_wrap">
+      <div class="slider">
+        <div class="img_list">
+          <img src="img/banner_1.jpg" alt="">
+          <img src="img/banner_2.jpg" alt="">
+          <img src="img/banner_3.jpg" alt="">
+          <img src="img/banner_4.jpg" alt="">
+          <img src="img/banner_5.jpg" alt="">
+        </div>
+      </div>
+      <div class="dir_btns">
+        <button class="prev"><img src="img/ico_prev_gray_l.png" alt=""></button>
+        <button class="next"><img src="img/ico_next_gray_l.png" alt=""></button>
+      </div>
+      <div class="dot_btns">
+        <button type="button" class="on"></button>
+        <button type="button"></button>
+        <button type="button"></button>
+        <button type="button"></button>
+        <button type="button"></button>
+      </div>
+    </div>
+  </section>
+  <section class="ex4">
+    <h2>과제</h2>
+    <div class="slider_wrap">
+      <div class="slider">
+        <ul>
+          <li>
+            <img src="img/slide_1.jpg" alt="">
+            <p>쓰고 , 노래하고 , 살아남은 여성들을 위한 책</p>
+          </li>
+          <li>
+            <img src="img/slide_2.jpg" alt="">
+            <p>금요일 마다 체포되는 여자</p>
+          </li>
+          <li>
+            <img src="img/slide_3.jpg" alt="">
+            <p>고기영, 빛을 설계하는 여자</p>
+          </li>
+          <li>
+            <img src="img/slide_4.jpg" alt="">
+            <p>나와 지구의 연결 고리 #ELLE 보이스</p>
+          </li>
+          <li>
+            <img src="img/slide_5.jpg" alt="">
+            <p>n번방 텔레그램 사건 앞에 연대하는 여성들의 목소리</p>
+          </li>
+          <li>
+            <img src="img/slide_6.jpg" alt="">
+            <p>원더우먼 ! 그레타 거윅</p>
+          </li>
+          <li>
+            <img src="img/slide_7.jpg" alt="">
+            <p>사랑받아야 하는 우리들 #ELLE 보이스</p>
+          </li>
+          <li>
+            <img src="img/slide_8.jpg" alt="">
+            <p>코로나 시대에 여성으로 사는법</p>
+          </li>
+        </ul>
+      </div>
+      <div class="directs">
+        <button class="pv"><img src="img/ico_prev_gray_l.png" alt=""></button>
+        <button class="nx"><img src="img/ico_next_gray_l.png" alt=""></button>
+      </div>
+    </div>
+  </section>
+  <section class="ex5">
+    <h2>과제</h2>
+    <div class="sliderwrap">
+      <div class="newswrap">
+        <ol>
+          <li>생후 6일 아기 방치해 사망…쓰레기봉투에 시신 유기</li>
+          <li>경찰 '미신고 영아' 수사 780건으로 늘어…사망 27명</li>
+          <li>삼성전자 2분기 영업익 96% 급감한 6천억원…"바닥은 지났다"</li>
+          <li>원희룡 "양평고속道 백지화, 인사책임 각오한 독자적 결단"</li>
+          <li>군, 지난달 말 '독도 방어훈련' 소규모·비공개로 시행</li>
+        </ol>
+      </div>
+    </div>
+    <div class="roop_btns"><button class="nextb"><img src="img/ico_prev_gray_l.png" alt=""></button><button class="prevb"><img src="img/ico_next_gray_l.png" alt=""></button></div>
+  </section>
+</body>
+</html>

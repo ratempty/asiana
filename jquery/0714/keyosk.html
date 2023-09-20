@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>키오스크</title>
+  <style>
+    *{ margin: 0; padding: 0; list-style: none; color:inherit; font:inherit; }
+    body{ text-align: center; }
+    h2{ font-size: 24px; margin-bottom: 20px; font-weight: bold; }
+    #wrap{ display: flex; flex-wrap: wrap; width: 1400px; margin: auto; }
+    #wrap h1{ margin: 50px 0 30px; width:100%; font-size: 28px; font-weight: bold; }
+    #wrap>div{ padding: 20px; margin: 0 10px; }
+    #menu{ background:#dedede; width: 780px; }
+    #menu ul{ display: flex; flex-wrap:wrap; }
+    #menu li{ width: 150px; margin: 3px; background: #fff; cursor:pointer; }
+    #menu span{ display: block; padding: 6px 0; }
+    #menu img{ width: 100%; }
+    #order{ background:#fc0; width: 500px; }
+    #order table{ border-collapse: collapse; border-spacing: 0; background: #fff; margin-bottom: 30px; width: 100%; }
+    #order table tr { border-bottom: 1px solid #ccc; }
+    #order table th { background: #000; color: #fff; font-weight: bold; padding: 6px 0; }
+    #order table td { padding: 6px 0; }
+    #order #list td{ height: 15px; }
+    #order #list td:nth-child(2n) { background: #ededed; }
+    #order #list .o_no{ width: 10%; }
+    #order #list .o_name{ width: 40%; }
+    #order #list .o_cnt{ width: 15%; }
+    #order #list .o_price{ width: 35%; }
+    #order #pay button{ border: none; background: #3c3; color: #fff; padding: 5px; border-radius: 5px;}
+    #order #pay th{ width: 20%; }
+    #order #pay td{ height: 20px; }
+    #order #pay .payment { background: #000; color: #fff; margin: 15px auto 0; }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    $(function(){
+      let $menu = $('#menu').find('li');
+      let $money = $('#pay').find('.cash');
+      let $pay = $('.payment');
+      let no = 0; 
+      let paySum = 0; 
+      let inputSum = 0; 
+      $menu.click(function(){
+        orderList($(this));
+      })
+      $money.click(function(){
+        let m = $(this).text().replace(',','').slice(0,-1);
+        inputSum += Number(m);
+        $('#input_sum').text(thousand(inputSum))
+      })
+      $pay.click(function(){
+        let result = inputSum - paySum ;
+        let notiTxt ;
+        if( inputSum > paySum ){
+          notiTxt = '남았습니다.'
+          result = Math.abs(result)
+        }else{
+          notiTxt = '부족합니다.'
+          result = Math.abs(result)
+        }
+        $('#change').text( thousand(result) + notiTxt );
+      })
+      function orderList (p){
+        let pName = p.find('.p_name').text();
+        let pPrice = p.find('.p_price').text().replace(',','').slice(0,-1);
+        paySum += Number(pPrice); 
+        $('#pay_sum').text(thousand(paySum));
+        printBill(pName, pPrice);
+      }
+      function printBill(name,price){
+        no++;
+        $('.blank').remove();
+        let insertTr;
+        insertTr += '<tr>';
+        insertTr += '<td class="o_no">'+ no +'</td>';
+        insertTr += '<td class="o_name"> '+ name +' </td>';
+        insertTr += '<td class="o_cnt">'+ 1 +'</td>';
+        insertTr += '<td class="o_price">'+ thousand(price) +'</td>';
+        insertTr += '</tr>';
+        $('#list').append(insertTr);
+      }
+      function thousand(i){
+        //n.toString().replace(/\B(?=\d{3}+(?!\d))/g,",")
+        i = i.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
+        return i +' 원 ';
+      }
+    })
+  </script>
+</head>
+<body>
+  <div id="wrap">
+    <h1>결제 시스템</h1>
+    <div id="menu">
+      <h2>메뉴</h2>
+      <ul>
+        <li><img src="foodImg/p1.jpg" alt=""><span class="p_name">순대</span><span class="p_price">3,500원</span></li>
+        <li><img src="foodImg/p2.jpg" alt=""><span class="p_name">비빔국수</span><span class="p_price">4,500원</span></li>
+        <li><img src="foodImg/p3.jpg" alt=""><span class="p_name">김밥</span><span class="p_price">2,800원</span></li>
+        <li><img src="foodImg/p4.jpg" alt=""><span class="p_name">잔치국수</span><span class="p_price">4,200원</span></li>
+        <li><img src="foodImg/p5.jpg" alt=""><span class="p_name">튀김</span><span class="p_price">2,000원</span></li>
+        <li><img src="foodImg/p6.jpg" alt=""><span class="p_name">야채죽</span><span class="p_price">5,000원</span></li>
+        <li><img src="foodImg/p7.jpg" alt=""><span class="p_name">돈까스</span><span class="p_price">6,500원</span></li>
+        <li><img src="foodImg/p8.jpg" alt=""><span class="p_name">비빔밥</span><span class="p_price">5,500원</span></li>
+        <li><img src="foodImg/p9.jpg" alt=""><span class="p_name">군만두</span><span class="p_price">2,400원</span></li>
+        <li><img src="foodImg/p10.jpg" alt=""><span class="p_name">육개장</span><span class="p_price">7,000원</span></li>
+        <li><img src="foodImg/p11.jpg" alt=""><span class="p_name">라면</span><span class="p_price">2,500원</span></li>
+        <li><img src="foodImg/p12.jpg" alt=""><span class="p_name">떡볶이</span><span class="p_price">3,000원</span></li>
+        <li><img src="foodImg/p13.jpg" alt=""><span class="p_name">우동</span><span class="p_price">6,000원</span></li>
+        <li><img src="foodImg/p14.jpg" alt=""><span class="p_name">피자</span><span class="p_price">15,500원</span></li>
+        <li><img src="foodImg/p15.jpg" alt=""><span class="p_name">어묵</span><span class="p_price">3,000원</span></li>
+      </ul>
+    </div>
+    <div id="order">
+      <h2>계산서</h2>
+      <table id="list">
+        <tr>
+          <th>No</th>
+          <th>품명</th>
+          <th>수량</th>
+          <th>단가</th>
+        </tr>
+        <tr class="blank">
+          <td class="o_no"></td>
+          <td class="o_name"></td>
+          <td class="o_cnt"></td>
+          <td class="o_price"></td>
+        </tr>
+      </table>
+      <table id="pay" style="border:1px solid #222">
+        <tr>
+          <th>총 금액</th>
+          <td id="pay_sum"></td>
+        </tr>
+        <tr>
+          <th rowspan="2">받은 돈</th>
+          <td id="input_sum"></td>
+        </tr>
+        <tr>
+          <td>
+            <button class="cash">100원</button>
+            <button class="cash">500원</button>
+            <button class="cash">1,000원</button>
+            <button class="cash">10,000원</button>
+            <button class="cash">50,000원</button>
+            <button class="payment">계산하기</button>
+          </td>
+        </tr>
+        <tr>
+          <th>거스름돈 </th>
+          <td id="change"></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

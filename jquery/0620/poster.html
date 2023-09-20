@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script>
+    $(function(){
+      // 순번호출 : selector.eq(순서) --- 0 번째 부터 / 3초마다 반복 실행 setInterval
+      // img 구성인식 : .find('img')  : 새로 인식 (새로운 구성을 인식)
+      // 첫번째 이미지가 서서히 사라진 뒤 제일뒤로 이동하고
+      // find('img').eq(0) fadeOut  img.appendTo(slide_container)
+      //  두번째 이미지가 서서히 나타남 
+      // find('img').eq(1) fadeIn
+      const slidePoster = ()=>{
+        let imgs = $('.slide_container').find('img')
+        imgs.eq(0).fadeOut(3000,()=>{
+          imgs.eq(0).appendTo($('.slide_container'));
+        });
+        imgs.eq(1).fadeIn(3000);
+      }
+      let timer = setInterval(slidePoster,3000);
+      $('.slide_container').on('mouseenter',()=>{
+        clearInterval(timer);
+      })
+      $('.slide_container').on('mouseleave',()=>{
+        timer = setInterval(slidePoster,3000);
+      })
+      
+    });
+  </script>
+  <title>poster - fadeInOut</title>
+  <style>
+    .slide_container{ width:400px; height:570px; border:5px solid #09c; margin: 50px auto; position:relative; }
+    img{ width:400px; height:570px; position:absolute; left:0; top:0;  }
+    img:not(:nth-child(1)){display:none;}
+  </style>
+</head>
+<body>
+  <div class="slide_container">
+    <img src="poster/1.jpg" alt="">
+    <img src="poster/2.jpg" alt="">
+    <img src="poster/3.jpg" alt="">
+    <img src="poster/4.jpg" alt="">
+    <img src="poster/5.jpg" alt="">
+    <img src="poster/6.jpg" alt="">
+  </div>
+</body>
+</html>
