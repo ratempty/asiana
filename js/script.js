@@ -65,33 +65,15 @@ let mySwiper1 = new Swiper(".mySwiper", {
     prevEl: "#prev1",
   },
 });
-// let mySwiper2 = new Swiper(".mySwiper2", {
-//   effect: 'fade',
-//   speed:1000,
-//   loop:true,
-//   fadeEffect:{crossFade:true},
-//   touchRatio: 0,
-//   allowTouchMove: false,
-//   autoplay: {
-//     delay: 2500,
-//     disableOnInteraction: false,
-//   },
-//   navigation: {
-//     nextEl: '#next1',
-//     prevEl: '#prev1',
-//   },
-// });
 
 const playbtn1 = document.querySelector("#play1");
 const pausebtn1 = document.querySelector("#pause1");
 
 playbtn1.addEventListener("click", () => {
   mySwiper1.autoplay.start();
-  // mySwiper2.autoplay.start()
 });
 pausebtn1.addEventListener("click", () => {
   mySwiper1.autoplay.stop();
-  // mySwiper2.autoplay.stop();
 });
 
 let swiperfind = document.querySelector(".mySwiper");
@@ -103,13 +85,10 @@ mySwiper1.on("slideChange", function () {
   for (let u = 0; u < explane.length; u++) {
     explane[u].style.opacity = 0;
     if (swiperIndex == u) {
-      explane[swiperIndex].style.opacity = 1;
+      explane[u].style.opacity = 1;
     }
   }
 });
-
-//--------------------------------------------------------------------
-
 //page1--------------------------------------------------------------
 
 //page2--------------------------------------------------------------------
